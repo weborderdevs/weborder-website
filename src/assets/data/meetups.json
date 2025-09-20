@@ -223,5 +223,32 @@
       "body": "Plática sobre Infrastructure as code donde Efrén nos platica sobre Terraform y sobre Crossplane.",
       "isVirtual": true,
       "image": "efren.jpg"
+   },
+   {
+      "date": "28-01-2025",
+      "log": "Como crear un Bot de discord?",
+      "author": "Efren Gonzalez",
+      "url": "https://www.youtube.com/watch?v=LZMXwJSN7us&t=2s",
+      "body": "En el siguiente video Efren nos muestra como crear un bot de discord. En el proceso se utilizó .NET",
+      "isVirtual": true,
+      "image": "efren.jpg"
+   },
+   {
+      "date": "28-01-2025",
+      "log": "ModernCSS: Cosas que debes saber para el 2025",
+      "author": "Raúl Ruiz",
+      "url": "https://www.youtube.com/watch?v=wTYcXNn6Ylw&t=503s",
+      "body": "En el video Raul Ruiz explica \"Modern CSS\" como un conjunto de principios y prácticas para optimizar el desarrollo web, no una versión específica de CSS. Se centra en la modularidad del código mediante nesting y BEM, mejorando el rendimiento al escribir CSS eficiente y optimizando la estructura del código para facilitar el mantenimiento y la escalabilidad. El video resalta la importancia de la accesibilidad, incluyendo consideraciones para usuarios con discapacidades visuales. Además, explora nuevas adiciones a CSS como container queries, el pseudo-selector :has, subgrid, nuevos espacios de color, view transitions y animaciones controladas por el scroll. Finalmente, se mencionan otras adiciones a CSS que vienen en el horizonte pero no estan soportadas al 100% en todos los navegadores.",
+      "isVirtual": true,
+      "image": "raul.jpg"
+   },
+   {
+      "date": "25-11-2025",
+      "log": "WeBorder developers: Bienvenidos al mundo <strike>laboral</strike> real",
+      "author": "Raúl Ruiz, Victor Talamantes, Efren Gonzalez",
+      "url": "",
+      "body": "Platica sobre tips y consejos sobre la industria para estudiantes que vayan a entrar al mundo laboral. Esta platica va a ser parte de la semana de ingeniería de la Universidad Autónoma de Ciudad Juárez (UACJ) .",
+      "isVirtual": false,
+      "image": ""
    }
 ]

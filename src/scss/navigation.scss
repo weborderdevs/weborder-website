@@ -97,6 +97,10 @@
          transform-origin: 0% 0%;
          transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 
+         a {
+            width: 100%;
+         }
+
          li {
             padding: 10px 0;
             font-size: 1.1rem;
@@ -137,7 +141,7 @@
 }
 
 @media screen and (min-width: var.$resolution-medium) {
-   .navigation {     
+   .navigation {
       #menuToggle {
          span {
             background: var.$color-light;
@@ -148,11 +152,10 @@
 
 @media screen and (min-width: var.$resolution-large) {
    .navigation {
-      
-      &.light-text #menuToggle #menu li{
+      &.light-text #menuToggle #menu li {
          color: var.$color-light;
       }
-      
+
       &.scrolling {
          #menuToggle #menu {
             li {
@@ -179,6 +182,10 @@
             margin: 0;
             text-align: right;
             transition: all 0s;
+
+            a {
+               width: auto;
+            }
 
             li {
                color: var.$color-primary;
