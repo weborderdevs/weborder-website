@@ -5,13 +5,19 @@
       min-height: 400px;
    }
 
+   &__social-media-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+
    #landing-cover {
       position: relative;
       overflow: hidden;
       background-color: #ededed;
 
       #cover-copy {
-         width: min(100%, 500px);
+         width: 100%;
          padding-top: 9rem;
          padding-bottom: var.$section-spacing;
          p {
@@ -25,6 +31,11 @@
    }
 
    @media screen and (min-width: var.$resolution-medium) {
+      .landing {
+         &__social-media-container {
+            max-width: 400px;
+         }
+      }
       #landing-cover {
          &::before {
             width: 60%;
@@ -47,10 +58,10 @@
          }
 
          &::after {
-            width: 45%;
+            width: 50%;
             height: 100%;
             position: absolute;
-            left: 55%;
+            left: 50%;
             top: 0;
             content: '';
             background-image: url(../assets/images/home/home-cover-robot.png);
@@ -61,9 +72,11 @@
          }
 
          #cover-copy {
+            width: min(100%, 500px);
             padding-top: 12rem;
             padding-bottom: var.$section-spacing-lg;
-            z-index: 1;
+            position: relative;
+            z-index: 2;
          }
       }
    }
@@ -205,11 +218,14 @@
 
       @import url('../scss/meetups.scss');
 
+      .next-meetup-wrapper {
+         text-decoration: none;
+      }
       .intro {
          padding: 0;
       }
 
-      @media screen and (min-width: var.$resolution-large) {
+      @media screen and (min-width: var.$resolution-medium) {
          .intro {
             padding: 8rem 0 0;
             transform: translateY(-50%);

@@ -22,7 +22,7 @@ $spacing-lg: 250px;
       .section-title {
          font-size: 2rem;
          padding-bottom: 1rem;
-         font-family: "Gordita Semibold";
+         font-family: 'Gordita Semibold';
          color: #6c0ab3;
       }
 
@@ -45,6 +45,7 @@ $spacing-lg: 250px;
       position: relative;
       bottom: 0;
       transform: none;
+      text-decoration: none;
    }
    .next-meetup {
       overflow: hidden;
@@ -275,6 +276,10 @@ $spacing-lg: 250px;
             top: -35px;
          }
       }
+      #next-meetup-author {
+         max-width: 400px;
+         line-height: 2rem;
+      }
       .next-meetup {
          flex-direction: row;
          z-index: 3;
@@ -296,7 +301,7 @@ $spacing-lg: 250px;
             left: 35%;
          }
          .screw-bottom {
-            bottom: 26%;
+            bottom: 14%;
             right: 10%;
             left: initial;
          }

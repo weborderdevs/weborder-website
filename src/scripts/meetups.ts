@@ -85,7 +85,6 @@ class Meetups {
                      .getElementById('list')
                      ?.insertAdjacentHTML('beforeend', str);
                });
-
             });
       }
    }
@@ -99,7 +98,7 @@ class Meetups {
       ) as HTMLImageElement;
 
       if (nextMeetupTitle) {
-         nextMeetupTitle.innerText = meetup.log;
+         nextMeetupTitle.innerHTML = meetup.log;
       }
 
       if (nextMeetupAuthor) {
@@ -114,12 +113,19 @@ class Meetups {
 
       if (nextMeetupImage && meetup.image) {
          nextMeetupImage.src = `../assets/images/meetups/hosts/${meetup.image}`;
+      } else {
+         nextMeetupImage.src = `../assets/images/home/home-cover-robot.png`;
       }
 
-      // Hide next meetup sign if today is greater than 
+      // Hide next meetup sign if today is greater than
       // meetup date
       let currentDate = new Date();
-      let dateString = String(currentDate.getDate()).padStart(2, '0') + '-' + (1 + currentDate.getMonth()) + '-' + currentDate.getFullYear();
+      let dateString =
+         String(currentDate.getDate()).padStart(2, '0') +
+         '-' +
+         (1 + currentDate.getMonth()) +
+         '-' +
+         currentDate.getFullYear();
       let meetupDate = dayjs(meetup.date, 'DD-MM-YYYY');
       let todayDate = dayjs(dateString, 'DD-MM-YYYY');
 
@@ -130,7 +136,10 @@ class Meetups {
 
    isPageMeetupsPage(): boolean {
       const currentURL = window.location.pathname;
-      return Boolean(currentURL.includes('meetups')) || Boolean(currentURL.includes('index.html'));
+      return (
+         Boolean(currentURL.includes('meetups')) ||
+         Boolean(currentURL.includes('index.html'))
+      );
    }
 }
 
