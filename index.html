@@ -18,13 +18,13 @@
             <img src="img/logo.png" alt="Weborder Logo"> 
         </div> -->
         <nav>
-            <a href="#">[Podcast]</a>
+            <a href="#" onclick="showPodcast()">[Podcast]</a>
             <a href="#">[Meetups]</a>
             <a href="#">[Acerca]</a>
         </nav>
     </header>
 
-    <main class="hero">
+    <main id="hero" class="hero active">
         
         <section class="hero-content">
             <div class="logo-area">
@@ -63,12 +63,68 @@
 
     </main>
 
-    
+    <section id="podcast-view" class="overlay">
+        <div class="podcast-container">
+            <button class="close-btn" onclick="hideOverlay()">[X]</button>
+            
+            <article class="episode-card">
+                <div class="episode-thumb">
+                    <div class="thumb-placeholder">
+                        <i data-feather="play-circle"></i>
+                        <span>EP. 54</span>
+                    </div>
+                </div>
+                <div class="episode-info">
+                    <span class="ep-number">Episodio 2</span>
+                    <h3 class="overlay-title">Programación orientada a nada</h3>
+                    <p>Generando y compartiendo conocimiento para fortalecer al área del borderplex, México y otros países de habla hispana.</p>
+                </div>
+            </article>
+
+            <hr class="divider">
+
+            <article class="episode-card">
+                <div class="episode-thumb">
+                    <div class="thumb-placeholder">
+                        <i data-feather="play-circle"></i>
+                        <span>EP. 53</span>
+                    </div>
+                </div>
+                <div class="episode-info">
+                    <span class="ep-number">Episodio 1</span>
+                    <h3 class="overlay-title">El inicio del comienzo</h3>
+                    <p>Generando y compartiendo conocimiento para fortalecer al área del borderplex, México y otros países de habla hispana.</p>
+                </div>
+            </article>
+        </div>
+    </section>
 
     <script>
-        // Inicializar iconos
-        feather.replace();
+        feather.replace(); // Icons
 
+        function showPodcast() {
+            const podcast = document.getElementById('podcast-view');
+            podcast.classList.add('active');
+            hideHero();
+        }
+
+        function hideHero() {
+            const hero = document.getElementById('hero');
+            hero.classList.remove('active');
+        }
+
+        function showHero() {
+            const hero = document.getElementById('hero');
+            hero.classList.add('active');
+        }
+
+        function hideOverlay() {
+            const overlay = document.getElementsByClassName('overlay')
+            for (let i = 0; i < overlay.length; i++) {
+                overlay[i].classList.remove('active');
+            }
+            showHero();
+        }
     </script>
 </body>
 </html>

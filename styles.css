@@ -47,13 +47,17 @@ nav a:hover {
 }
 
 .hero {
+    display: none;
+}
+
+.hero.active {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-grow: 1;
     padding: 2rem 8%;
     width: 100%;
     max-width: 1700px;
-    flex-grow: 1;
     gap: 2rem;
     margin: auto;
 }
@@ -166,6 +170,12 @@ p.description {
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 2em;
+}
+.overlay.active {
+    display: block;
+}
+.overlay-title {
+    color: #00FFFF;
 }
 
 @keyframes blink {
