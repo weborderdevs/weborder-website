@@ -14,9 +14,9 @@
 <body>
 
     <header>
-        <!-- <div class="header-logo">
+        <div class="header-logo">
             <img src="img/logo.png" alt="Weborder Logo"> 
-        </div> -->
+        </div>
         <nav>
             <a href="#" onclick="showOverlay('podcast-view');" class="menu podcast-view">[Podcast]</a>
             <a href="#" onclick="showOverlay('meetups-view');" class="menu meetups-view">[Meetups]</a>
@@ -122,6 +122,8 @@
             overlay.classList.add('active');
             const navLink = document.querySelector('.menu.' + overlayView);
             navLink.classList.add('active');
+            const logo = document.querySelector('.header-logo img');
+            logo.classList.add('active');
         }
 
         function hideOverlay(shouldShowHero) {
@@ -133,6 +135,8 @@
 
             if (shouldShowHero) {
                 showHero();
+                const logo = document.querySelector('.header-logo img');
+                logo.classList.remove('active');
             }
         }
 

@@ -28,10 +28,22 @@ body {
 header {
     padding: 2rem 5%;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: space-between; 
     align-items: center;
     font-size: 0.9rem;
     width: 100%;
+}
+
+.header-logo img {
+    width: 10em;
+    transform: translateY(-5em);
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.header-logo img.active {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 nav a {
