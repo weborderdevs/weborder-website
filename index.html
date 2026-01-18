@@ -19,8 +19,8 @@
         </div> -->
         <nav>
             <a href="#" onclick="showOverlay('podcast-view');" class="menu podcast-view">[Podcast]</a>
-            <a href="#" class="menu">[Meetups]</a>
-            <a href="#" class="menu">[Acerca]</a>
+            <a href="#" onclick="showOverlay('meetups-view');" class="menu meetups-view">[Meetups]</a>
+            <a href="#" onclick="showOverlay('about-view');" class="menu about-view">[Acerca]</a>
         </nav>
     </header>
 
@@ -65,7 +65,7 @@
 
     <section id="podcast-view" class="overlay">
         <div class="podcast-container">
-            <button class="close-btn" onclick="hideOverlay()">[X]</button>
+            <button class="close-btn" onclick="hideOverlay(true)">[X]</button>
             
             <article class="episode-card">
                 <div class="episode-thumb">
@@ -98,6 +98,8 @@
             </article>
         </div>
     </section>
+    <section id="meetups-view" class="overlay"></section>
+    <section id="about-view" class="overlay"></section>
 
     <script>
         feather.replace(); // Icons
@@ -114,20 +116,31 @@
 
         function showOverlay(overlayView) {
             hideHero();
+            hideOverlay();
+            cleanMenu();
             const overlay = document.getElementById(overlayView);
             overlay.classList.add('active');
             const navLink = document.querySelector('.menu.' + overlayView);
             navLink.classList.add('active');
         }
 
-        function hideOverlay() {
+        function hideOverlay(shouldShowHero) {
             const overlay = document.getElementsByClassName('overlay');
-            const menu = document.getElementsByClassName('menu');
             for (let i = 0; i < overlay.length; i++) {
                 overlay[i].classList.remove('active');
+            }
+            cleanMenu();
+
+            if (shouldShowHero) {
+                showHero();
+            }
+        }
+
+        function cleanMenu() {
+            const menu = document.getElementsByClassName('menu');
+            for (let i                                                                                                                                                                                                                              = 0; i < menu.length; i++) {
                 menu[i].classList.remove('active');
             }
-            showHero();
         }
     </script>
 </body>
