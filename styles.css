@@ -46,6 +46,12 @@ nav a:hover {
     text-shadow: 0 0 5px var(--accent-glow);
 }
 
+nav a.active {
+    background:  cyan;
+    color: black;
+    padding: 0.1em 0.5em;
+}
+
 .hero {
     display: none;
 }
