@@ -6,7 +6,7 @@
     --accent-green: #00ff41;
     --accent-glow: #00ff41;
     --accent-blue: #00ffff;
-    --font-main: "JetBrains Mono", monospace;
+    --font-main: 'JetBrains Mono', monospace;
 }
 
 * {
