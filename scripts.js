@@ -98,7 +98,3 @@ function closeImageModal() {
     const modalElement = document.querySelector('.image-modal');
     modalElement.classList.remove('active');
 }
-
-function preventDefault(event) {
-    event.preventDefault();
-}
