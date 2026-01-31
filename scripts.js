@@ -20,6 +20,10 @@ function showOverlay(overlayView) {
     navLink.classList.add('active');
     const logo = document.querySelector('.header-logo img');
     logo.classList.add('active');
+
+    if (overlayView === 'meetups-view') {
+        generateMeetupThumbnails();
+    }
 }
 
 function hideOverlay(shouldShowHero) {
@@ -73,6 +77,7 @@ const MEETUP_IMAGES = [
 ];
 
 function generateMeetupThumbnails() {
+    console.log('Generating meetup thumbnails...');
     const thumbnailsContainer = document.querySelector('.meetups-thumbnails');
     thumbnailsContainer.innerHTML = '';
 
