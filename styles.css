@@ -3,8 +3,9 @@
     --bg-gradient: radial-gradient(circle at 80% 20%, #0a1f25 0%, #050a0f 60%);
     --text-main: #ffffff;
     --text-secondary: #a0a0a0;
-    --accent-green: #00ff41; 
-    --accent-glow: #00ff41; 
+    --accent-green: #00ff41;
+    --accent-glow: #00ff41;
+    --accent-blue: #00ffff;
     --font-main: 'JetBrains Mono', monospace;
 }
 
@@ -28,14 +29,14 @@ body {
 header {
     padding: 2rem 5%;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
     width: 100%;
 }
 
 .close-btn {
-    color:#00ff41;
+    color: #00ff41;
     background-color: transparent;
     font-size: 1.6em;
     border: none;
@@ -69,7 +70,7 @@ nav a:hover {
 }
 
 nav a.active {
-    background:  cyan;
+    background: cyan;
     color: black;
     padding: 0.1em 0.5em;
 }
@@ -112,7 +113,7 @@ nav a.active {
 }
 
 h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem); 
+    font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.2;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
@@ -142,8 +143,10 @@ p.description {
     width: 32px;
     height: 32px;
     cursor: pointer;
-    transition: transform 0.2s, text-shadow 0.2s;
-    border: 1px solid transparent; 
+    transition:
+        transform 0.2s,
+        text-shadow 0.2s;
+    border: 1px solid transparent;
 }
 
 .social-icon:hover {
@@ -154,7 +157,7 @@ p.description {
 .hero-stats {
     flex: 1;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     align-items: center;
     max-height: 10em;
 }
@@ -167,7 +170,7 @@ p.description {
     gap: 3rem;
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(5px);
-    max-width: 100%; 
+    max-width: 100%;
 }
 
 .stat-item {
@@ -179,7 +182,7 @@ p.description {
     display: block;
     font-size: clamp(2.5rem, 6vw, 3.5rem);
     font-weight: 700;
-    color: #00ffff;
+    color: var(--accent-blue);
     text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
     margin-bottom: 0.5rem;
 }
@@ -192,19 +195,19 @@ p.description {
 
 .overlay {
     display: none;
-    width:80%;
+    width: 80%;
     max-width: 1600px;
     margin: auto;
     border-radius: 20px;
-    border: 1px solid #1E5660;
-    background: #0D161D;
+    border: 1px solid #1e5660;
+    background: #0d161d;
     padding: 2em;
 }
 .overlay.active {
     display: block;
 }
 .overlay-title {
-    color: #00FFFF;
+    color: var(--accent-blue);
 }
 
 .episode-card {
@@ -225,17 +228,19 @@ p.description {
     justify-content: center;
     flex-shrink: 0; /* Evita que se aplaste en móvil */
     position: relative;
-    
+
     /* Efecto de resplandor interno */
-    box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.15), 
-                0 0 10px rgba(0, 255, 65, 0.1); 
+    box-shadow:
+        inset 0 0 20px rgba(0, 255, 65, 0.15),
+        0 0 10px rgba(0, 255, 65, 0.1);
     transition: transform 0.3s ease;
 }
 
 .episode-thumb:hover {
     transform: scale(1.02);
-    box-shadow: inset 0 0 30px rgba(0, 255, 65, 0.25), 
-                0 0 15px rgba(0, 255, 65, 0.2); 
+    box-shadow:
+        inset 0 0 30px rgba(0, 255, 65, 0.25),
+        0 0 15px rgba(0, 255, 65, 0.2);
 }
 
 .episode-info {
@@ -250,7 +255,7 @@ p.description {
 
 .ep-number {
     display: block;
-    color: #00ffff;
+    color: var(--accent-blue);
     font-size: 0.8em;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -261,17 +266,82 @@ p.description {
     margin: 0.3em 0;
 }
 
+#meetups-view {
+    .overlay-title {
+        color: var(--accent-blue);
+    }
+
+    .close-btn {
+        transform: none;
+    }
+}
+
+.meetups-thumbnails {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 32px;
+
+    img {
+        border-radius: 20%;
+        cursor: pointer;
+        justify-self: center;
+        width: 100%;
+    }
+}
+
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 10;
+
+    &.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        max-height: 90vh;
+        max-width: 100%;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        color: var(--accent-green);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 @media (max-width: 1200px) {
     .hero {
         flex-direction: column;
         padding: 2rem 5%;
-        justify-content: center; 
-        gap: 3rem; 
+        justify-content: center;
+        gap: 3rem;
     }
 
     header {
@@ -312,12 +382,14 @@ p.description {
     .stats-card {
         padding: 1.5rem;
         gap: 0.5rem;
+
+        flex-flow: wrap;
     }
-    
+
     .stat-number {
         font-size: 2rem;
     }
-    
+
     h1 {
         font-size: 2rem;
     }

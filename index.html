@@ -1,108 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weborder Developers</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    
-    <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weborder Developers</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+            rel="stylesheet"
+        />
 
-    <header>
-        <div class="header-logo">
-            <a href="#" onclick="hideOverlay(true)">
-                <img src="img/logo.png" alt="Weborder Logo">
-            </a>
-        </div>
-        <nav>
-            <a href="#" onclick="showOverlay('podcast-view');" class="menu podcast-view">[Podcast]</a>
-            <a href="#" onclick="showOverlay('meetups-view');" class="menu meetups-view">[Meetups]</a>
-            <a href="#" onclick="showOverlay('about-view');" class="menu about-view">[Acerca]</a>
-        </nav>
-    </header>
-
-    <main id="hero" class="hero active">
-        
-        <section class="hero-content">
-            <div class="logo-area">
-                <img src="img/logo.png" />
+        <script src="https://unpkg.com/feather-icons"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <div class="header-logo">
+                <a href="#" onclick="hideOverlay(true)">
+                    <img src="img/logo.png" alt="Weborder Logo" />
+                </a>
             </div>
+            <nav>
+                <!--
+        <a
+          href="#"
+          onclick="showOverlay('podcast-view')"
+          class="menu podcast-view"
+          >[Podcast]</a
+        >
+        -->
+                <a
+                    href="#"
+                    onclick="showOverlay('meetups-view')"
+                    class="menu meetups-view"
+                    >[Meetups]</a
+                >
+                <!--
+        <a href="#" onclick="showOverlay('about-view')" class="menu about-view"
+          >[Acerca]</a
+        >
+      -->
+            </nav>
+        </header>
 
-            <h1>Creando Comunidad<span class="typing-cursor">_</span></h1>
-            
-            <p class="description">
-                Generando y compartiendo conocimiento para fortalecer al área del borderplex, México y otros países de habla hispana en materia de programación y tecnología.
-            </p>
-
-            <div class="social-links">
-                <i data-feather="message-square" class="social-icon"></i> <i data-feather="facebook" class="social-icon"></i>
-                <i data-feather="youtube" class="social-icon"></i>
-                <i data-feather="github" class="social-icon"></i>
-            </div>
-        </section>
-
-        <section class="hero-stats">
-            <div class="stats-card">
-                <div class="stat-item">
-                    <span class="stat-number">6</span>
-                    <span class="stat-label">Meetups</span>
+        <main id="hero" class="hero active">
+            <section class="hero-content">
+                <div class="logo-area">
+                    <img src="img/logo.png" />
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Miembros</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">1</span>
-                    <span class="stat-label">Episodios</span>
-                </div>
-            </div>
-        </section>
 
-    </main>
+                <h1>Creando Comunidad<span class="typing-cursor">_</span></h1>
 
+                <p class="description">
+                    Generando y compartiendo conocimiento para fortalecer al
+                    área del borderplex, México y otros países de habla hispana
+                    en materia de programación y tecnología.
+                </p>
+
+                <div class="social-links">
+                    <!--
+            <i data-feather="message-square" class="social-icon"></i>          
+          -->
+                    <a
+                        href="https://www.facebook.com/groups/weborderdev"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <i data-feather="facebook" class="social-icon"></i>
+                    </a>
+                    <a
+                        href="https://youtube.com/@weborderpodcast?si=dvXq2qwbgVFyameJ&sub_confirmation=1"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <i data-feather="youtube" class="social-icon"></i>
+                    </a>
+                    <a
+                        href="https://github.com/weborderdevs"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <i data-feather="github" class="social-icon"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section class="hero-stats">
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <span class="stat-number">25</span>
+                        <span class="stat-label">Meetups</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">400+</span>
+                        <span class="stat-label">Miembros</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Episodio</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Pláticas</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!--
     <section id="podcast-view" class="overlay">
-        <div class="podcast-container">
-            <button class="close-btn" onclick="hideOverlay(true)">[X]</button>
-            
-            <article class="episode-card">
-                <div class="episode-thumb">
-                    <div class="thumb-placeholder">
-                        <i data-feather="play-circle"></i>
-                        <span>EP. 54</span>
-                    </div>
-                </div>
-                <div class="episode-info">
-                    <span class="ep-number">Episodio 2</span>
-                    <h3 class="overlay-title">Programación orientada a nada</h3>
-                    <p>Generando y compartiendo conocimiento para fortalecer al área del borderplex, México y otros países de habla hispana.</p>
-                </div>
-            </article>
+      <div class="podcast-container">
+        <button class="close-btn" onclick="hideOverlay(true)">[X]</button>
 
-            <hr class="divider">
+        <article class="episode-card">
+          <div class="episode-thumb">
+            <div class="thumb-placeholder">
+              <i data-feather="play-circle"></i>
+              <span>EP. 54</span>
+            </div>
+          </div>
+          <div class="episode-info">
+            <span class="ep-number">Episodio 2</span>
+            <h3 class="overlay-title">Programación orientada a nada</h3>
+            <p>
+              Generando y compartiendo conocimiento para fortalecer al área del
+              borderplex, México y otros países de habla hispana.
+            </p>
+          </div>
+        </article>
 
-            <article class="episode-card">
-                <div class="episode-thumb">
-                    <div class="thumb-placeholder">
-                        <i data-feather="play-circle"></i>
-                        <span>EP. 53</span>
-                    </div>
-                </div>
-                <div class="episode-info">
-                    <span class="ep-number">Episodio 1</span>
-                    <h3 class="overlay-title">El inicio del comienzo</h3>
-                    <p>Generando y compartiendo conocimiento para fortalecer al área del borderplex, México y otros países de habla hispana.</p>
-                </div>
-            </article>
-        </div>
+        <hr class="divider" />
+
+        <article class="episode-card">
+          <div class="episode-thumb">
+            <div class="thumb-placeholder">
+              <i data-feather="play-circle"></i>
+              <span>EP. 53</span>
+            </div>
+          </div>
+          <div class="episode-info">
+            <span class="ep-number">Episodio 1</span>
+            <h3 class="overlay-title">El inicio del comienzo</h3>
+            <p>
+              Generando y compartiendo conocimiento para fortalecer al área del
+              borderplex, México y otros países de habla hispana.
+            </p>
+          </div>
+        </article>
+      </div>
     </section>
-    <section id="meetups-view" class="overlay"></section>
-    <section id="about-view" class="overlay"></section>
+    -->
+        <section id="meetups-view" class="overlay">
+            <article>
+                <button class="close-btn" onclick="hideOverlay(true)">
+                    [X]
+                </button>
+                <h2 class="overlay-title">Meetups</h2>
+                <p>
+                    Encuentros presenciales y virtuales donde la comunidad se
+                    reúne para hablar de desarrollo, tecnología y experiencia
+                    real.
+                </p>
+            </article>
 
-    <script src="scripts.js"></script>
-</body>
+            <div class="meetups-thumbnails"></div>
+
+            <div class="image-modal" onclick="closeImageModal()">
+                <button class="close-modal" onclick="closeImageModal()">
+                    [X]
+                </button>
+                <img
+                    src="img/meetups/meetup-1-1.jpg"
+                    alt="Meetup 1"
+                    onclick="event.stopPropagation()"
+                />
+            </div>
+        </section>
+        <!--
+        <section id="about-view" class="overlay"></section>
+    -->
+
+        <script src="scripts.js"></script>
+    </body>
 </html>
