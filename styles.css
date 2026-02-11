@@ -449,6 +449,46 @@ nav a.active {
     border-radius: 8px;
 }
 
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 2rem;
+}
+
+.about-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: rgba(0, 225, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.about-icon {
+    background: rgba(0, 225, 255, 0.1);
+    color: var(--accent-blue);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.about-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive para About */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+}
+
 .close-modal {
     position: absolute;
     top: 1rem;
@@ -464,6 +504,10 @@ nav a.active {
 
 .close-modal:hover {
     opacity: 0.8;
+}
+
+.blue {
+    color: var(--accent-blue);
 }
 
 /* Animations */
