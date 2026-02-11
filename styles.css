@@ -125,20 +125,65 @@ nav a.active {
     color: var(--accent-green);
     cursor: pointer;
     padding: 0.5rem;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: opacity 0.3s, text-shadow 0.3s;
     z-index: 101;
+    position: relative;
+    width: 24px;
+    height: 24px;
 }
 
 .hamburger-btn:hover {
-    color: #fff;
-    text-shadow: 0 0 5px var(--accent-green);
-    transform: scale(1.1);
+    opacity: 0.8;
+    text-shadow: 0 0 5px var(--accent-glow);
 }
 
-.hamburger-btn svg {
+.hamburger-icon {
     display: block;
     width: 24px;
     height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-line {
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+/* Initial state - hamburger */
+.hamburger-line-top {
+    transform: translateY(0);
+}
+
+.hamburger-line-middle {
+    opacity: 1;
+}
+
+.hamburger-line-bottom {
+    transform: translateY(0);
+}
+
+/* When menu is active - transform to X */
+.hamburger-btn.active .hamburger-icon {
+    transform: rotate(0deg); /* Remove the 180deg rotation */
+}
+
+.hamburger-btn.active .hamburger-line-top {
+    transform: translateY(3px) rotate(45deg);
+    transform-origin: center;
+}
+
+.hamburger-btn.active .hamburger-line-middle {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger-btn.active .hamburger-line-bottom {
+    transform: translateY(-6px) rotate(-45deg);
+    transform-origin: center;
 }
 
 /* Hero Section */

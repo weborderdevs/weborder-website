@@ -116,6 +116,7 @@ function toggleMenu() {
   
   // Update hamburger button aria label
   if (DOM.hamburgerBtn) {
+    toggleClass(DOM.hamburgerBtn, 'active', state.isMenuOpen);
     const label = state.isMenuOpen ? 'Cerrar menú' : 'Abrir menú';
     DOM.hamburgerBtn.setAttribute('aria-label', label);
   }
@@ -129,6 +130,7 @@ function closeMenu() {
   toggleClass(DOM.nav, 'active', false);
   
   if (DOM.hamburgerBtn) {
+    toggleClass(DOM.hamburgerBtn, 'active', false);
     DOM.hamburgerBtn.setAttribute('aria-label', 'Abrir menú');
   }
 }
