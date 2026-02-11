@@ -18,6 +18,7 @@
 }
 
 html {
+    background: black;
     font-size: 16px;
 }
 
@@ -31,6 +32,7 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     line-height: 1.5;
+    padding-bottom: 4rem;
 }
 
 /* Typography */
@@ -401,15 +403,10 @@ nav a.active {
     margin-bottom: 0.5rem;
 }
 
-/* Meetups View */
-#meetups-view .overlay-title {
-    color: var(--accent-blue);
-}
-
 .meetups-thumbnails {
     margin-top: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 columns always */
     gap: 1rem;
 }
 
@@ -417,9 +414,10 @@ nav a.active {
     border-radius: 12px;
     cursor: pointer;
     width: 100%;
-    height: 150px;
+    height: auto; /* Let aspect-ratio control height */
     object-fit: cover;
     transition: transform 0.3s ease;
+    aspect-ratio: 1/1; /* Make images square */
 }
 
 .meetups-thumbnails img:hover {
@@ -543,8 +541,7 @@ nav a.active {
     }
     
     .meetups-thumbnails {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.5rem;
+        gap: 1.5rem; /* Just update gap, keep 3 columns from default */
     }
 }
 
@@ -587,8 +584,7 @@ nav a.active {
     }
     
     .meetups-thumbnails {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 2rem;
+        gap: 2rem; /* Just update gap, keep 3 columns from default */
     }
 }
 
@@ -654,6 +650,10 @@ nav a.active {
     
     .stat-item:last-child {
         margin-bottom: 0;
+    }
+    
+    .meetups-thumbnails {
+        grid-template-columns: 1fr; /* Show 1 column below 768px */
     }
 }
 
