@@ -15,6 +15,11 @@
     box-sizing: border-box;
 }
 
+a, a:active, a:visited {
+    color: var(--accent-green);
+    text-decoration: none;
+}
+
 body {
     background-color: var(--bg-color);
     background-image: var(--bg-gradient);
@@ -41,8 +46,7 @@ header {
     font-size: 1.6em;
     border: none;
     cursor: pointer;
-    float: right;
-    transform: translateY(-125%);
+    align-self: flex-end;
 }
 
 .header-logo img {
@@ -156,22 +160,6 @@ p.description {
     filter: drop-shadow(0 0 5px var(--accent-green)); 
 }
 
-/* .social-icon {
-    color: var(--accent-green);
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    transition:
-        transform 0.2s,
-        text-shadow 0.2s;
-    border: 1px solid transparent;
-}
-
-.social-icon:hover {
-    transform: translateY(-3px);
-    filter: drop-shadow(0 0 5px var(--accent-green));
-} */
-
 .hero-stats {
     flex: 1;
     display: flex;
@@ -226,6 +214,22 @@ p.description {
 }
 .overlay-title {
     color: var(--accent-blue);
+}
+
+.overlay-container {
+    display: flex;
+    flex-direction: column;
+}
+.overlay-content {
+    padding: 0 3em;
+
+    h2 {
+        color: var(--accent-blue);
+    }
+
+    p {
+        color: var(--text-secondary);
+    }
 }
 
 .episode-card {
