@@ -139,6 +139,24 @@ p.description {
 }
 
 .social-icon {
+    color: var(--accent-green); /* El SVG tomará este color gracias a stroke="currentColor" */
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    
+    /* CAMBIO IMPORTANTE: text-shadow no funciona en SVG, usamos filter */
+    transition: transform 0.2s, filter 0.2s; 
+    
+    border: 1px solid transparent;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    /* Esto ya lo tenías bien, es perfecto para SVGs */
+    filter: drop-shadow(0 0 5px var(--accent-green)); 
+}
+
+/* .social-icon {
     color: var(--accent-green);
     width: 32px;
     height: 32px;
@@ -152,7 +170,7 @@ p.description {
 .social-icon:hover {
     transform: translateY(-3px);
     filter: drop-shadow(0 0 5px var(--accent-green));
-}
+} */
 
 .hero-stats {
     flex: 1;

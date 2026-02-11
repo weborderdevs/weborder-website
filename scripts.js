@@ -1,5 +1,3 @@
-feather.replace(); // Icons
-
 function hideHero() {
     const hero = document.getElementById('hero');
     hero.classList.remove('active');
