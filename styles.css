@@ -368,6 +368,10 @@ nav a.active {
     backdrop-filter: blur(5px);
 }
 
+.image-open .close-btn {
+    display: none;
+}
+
 @media (max-width: 767px) {
     .hamburger-btn {
         display: block;

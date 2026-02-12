@@ -303,6 +303,8 @@ function openImageModal(image) {
   
   // Prevent body scroll when modal is open
   document.body.style.overflow = 'hidden';
+  // Add a class to the body so we can take other actions
+  document.body.classList.add('image-open');
 }
 
 /**
@@ -315,6 +317,8 @@ function closeImageModal() {
   
   // Restore body scroll
   document.body.style.overflow = '';
+  // Remove the image modal class from the body
+  document.body.classList.remove('image-open');
 }
 
 // ============================================================================
