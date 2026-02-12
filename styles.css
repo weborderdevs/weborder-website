@@ -323,8 +323,8 @@ nav a.active {
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 1400px;
-    height: 90vh;
-    max-height: 90vh;
+    height: 80vh;
+    max-height: 80vh;
     border-radius: 12px;
     border: 2px solid rgba(30, 86, 96, 0.5);
 
