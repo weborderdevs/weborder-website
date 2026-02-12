@@ -159,7 +159,7 @@ function showOverlay(overlayView) {
   }
   
   hideHero();
-  hideOverlay();
+  hideOverlay(false);
   cleanMenu();
   
   const overlay = document.getElementById(overlayView);
