@@ -299,7 +299,7 @@ nav a.active {
 
 .stat-number {
     display: block;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
     font-weight: 700;
     color: var(--accent-blue);
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
@@ -308,7 +308,7 @@ nav a.active {
 
 .stat-label {
     color: var(--text-secondary);
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 3vw, 1.1rem);
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -689,10 +689,6 @@ nav a.active {
     .stats-card {
         padding: 3rem 4rem;
         gap: 3rem;
-    }
-
-    .stat-number {
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
     }
 
     .overlay {
