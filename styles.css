@@ -1,8 +1,8 @@
 :root {
     --bg-color: #050a0f;
     --bg-gradient: radial-gradient(circle at 80% 20%, #0a1f25 0%, #050a0f 60%);
-    --text-main: #ffffff;
-    --text-secondary: #a0a0a0;
+    --text-main: #afd5d5;
+    --text-secondary: #6b9696;
     --accent-green: #00ff41;
     --accent-glow: #00ff41;
     --accent-blue: #00ffff;
@@ -316,9 +316,8 @@ nav a.active {
 
 /* Overlay Components */
 .overlay {
-    display: none;
     position: fixed;
-    top: 50%;
+    top: 150%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
@@ -326,27 +325,41 @@ nav a.active {
     height: 80vh;
     max-height: 80vh;
     border-radius: 12px;
-    border: 2px solid rgba(30, 86, 96, 0.5);
+    border: 1px solid rgba(30, 86, 96, 0.8);
     margin: 0;
     background: rgba(13, 22, 29, 0.98);
     z-index: 1000;
     overflow-y: hidden;
+    transition: all 0.5s;
+}
+
+.overlay h2 {
+    font-size: 1.3rem;
+    margin: 1rem 3rem;
+    color: var(--accent-blue);
 }
 
 .overlay-container {
     width: 100%;
     height: 100%;
+}
+
+.overlay-content {
+    border: 1px dashed rgba(30, 86, 96, 1);
+    background: rgba(9, 15, 20, 0.98);
+    height: calc(100% - 6rem);
+    margin: 0.5rem 3rem 3rem 3rem;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-color: var(--accent-green) rgba(255, 255, 255, 0.1);
 }
 
 .overlay.active {
-    display: block;
+    top: 50%;
 }
 
 .overlay-title {
-    color: white;
+    color: var(--text-main);
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
@@ -531,8 +544,8 @@ nav a.active {
 }
 
 /* Utility Classes */
-.white {
-    color: white;
+.light {
+    color: var(--text-main);
 }
 .blue {
     color: var(--accent-blue);
@@ -658,7 +671,7 @@ nav a.active {
 
     .overlay {
         width: 90%;
-        max-width: 1400px;
+        max-width: 1200px;
         height: 85vh;
         max-height: 85vh;
     }
