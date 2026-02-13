@@ -209,6 +209,7 @@ nav a.active {
 .hero.active {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: var(--section-gap);
 }
@@ -680,7 +681,6 @@ nav a.active {
 
     .hero.active {
         flex-direction: row;
-        align-items: center;
         justify-content: space-between;
         max-width: 1400px;
         margin: 0 auto;
