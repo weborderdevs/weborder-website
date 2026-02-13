@@ -531,6 +531,9 @@ nav a.active {
 }
 
 /* Utility Classes */
+.white {
+    color: white;
+}
 .blue {
     color: var(--accent-blue);
 }
