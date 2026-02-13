@@ -325,28 +325,78 @@ function closeImageModal() {
 // Event Listeners Setup
 // ============================================================================
 
+// ============================================================================
+// Event Listeners Setup
+// ============================================================================
+
 /**
- * Handle Escape key press
+ * Handle key press
  * @param {KeyboardEvent} e - Keyboard event
  */
-function handleEscapeKey(e) {
-  if (e.key !== 'Escape') return;
-  
-  // Close image modal if open
-  if (DOM.imageModal?.classList.contains('active')) {
-    closeImageModal();
+function handleKeys(e) {
+  // Handle Escape key
+  if (e.key === 'Escape') {
+    // Close image modal if open
+    if (DOM.imageModal?.classList.contains('active')) {
+      closeImageModal();
+      return;
+    }
+    
+    // Close any open overlay
+    if (isAnyOverlayActive()) {
+      hideOverlay(true);
+      return;
+    }
+    
+    // Close mobile menu if open
+    if (state.isMenuOpen) {
+      closeMenu();
+    }
+      return;
+  }
+
+  // Handle p key for podcast view
+  if (e.key === 'p' || e.key === 'P') {
+    showOverlay('podcast-view');
     return;
   }
-  
-  // Close any open overlay
-  if (isAnyOverlayActive()) {
-    hideOverlay(true);
+
+  // Handle m key for meetups view
+  if (e.key === 'm' || e.key === 'M') {
+    showOverlay('meetups-view');
     return;
   }
-  
-  // Close mobile menu if open
-  if (state.isMenuOpen) {
-    closeMenu();
+
+  // Handle a key for about view
+  if (e.key === 'a' || e.key === 'A') {
+    showOverlay('about-view');
+    return;
+  }
+}
+
+/**
+ * Initialize event listeners
+ */
+function initEventListeners() {
+  // Close modal when clicking outside the image
+  if (DOM.imageModal) {
+    DOM.imageModal.addEventListener('click', (e) => {
+      if (e.target === DOM.imageModal) {
+        closeImageModal();
+      }
+    });
+  }
+
+  // Handle Escape key for closing modals, overlays, and menu
+  document.addEventListener('keydown', handleKeys);
+
+  // Close mobile menu when clicking on a menu item
+  if (DOM.nav) {
+    DOM.nav.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && state.isMenuOpen) {
+        closeMenu();
+      }
+    });
   }
 }
 
@@ -364,7 +414,7 @@ function initEventListeners() {
   }
   
   // Handle Escape key for closing modals, overlays, and menu
-  document.addEventListener('keydown', handleEscapeKey);
+  document.addEventListener('keydown', handleKeys);
   
   // Close mobile menu when clicking on a menu item
   if (DOM.nav) {
