@@ -11,6 +11,7 @@
     --section-gap: 2rem;
 }
 
+/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -100,7 +101,7 @@ header {
     opacity: 1;
 }
 
-/* Navigation */
+/* Navigation - Desktop First */
 nav {
     display: flex;
     gap: 1rem;
@@ -180,7 +181,6 @@ nav a.active {
 /* When menu is active - transform to X */
 .hamburger-btn.active .hamburger-icon {
     transform: rotate(0deg);
-    /* Remove the 180deg rotation */
 }
 
 .hamburger-btn.active .hamburger-line-top {
@@ -205,7 +205,6 @@ nav a.active {
     padding: var(--section-gap) var(--container-padding);
     width: 100%;
 }
-
 
 .hero.active {
     display: flex;
@@ -318,7 +317,6 @@ nav a.active {
 .overlay {
     display: none;
     position: fixed;
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -328,7 +326,6 @@ nav a.active {
     max-height: 80vh;
     border-radius: 12px;
     border: 2px solid rgba(30, 86, 96, 0.5);
-
     margin: 0;
     background: rgba(13, 22, 29, 0.98);
     z-index: 1000;
@@ -371,54 +368,6 @@ nav a.active {
 
 .image-open .close-btn {
     display: none;
-}
-
-@media (max-width: 767px) {
-    .hamburger-btn {
-        display: block;
-    }
-
-    nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(13, 22, 29, 0.98);
-        flex-direction: column;
-        padding: 5rem 2rem 2rem;
-        transition: right 0.3s ease;
-        z-index: 99;
-        border-left: 1px solid rgba(30, 86, 96, 0.5);
-    }
-
-    nav.active {
-        right: 0;
-    }
-
-    nav a {
-        margin: 0;
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    nav a:last-child {
-        border-bottom: none;
-    }
-
-    .stat-item:last-child {
-        margin-bottom: 0;
-    }
-
-    .meetups-thumbnails {
-        grid-template-columns: 1fr;
-        /* Show 1 column below 768px */
-    }
-
-    .overlay-content {
-        padding: 0 1rem 2rem 1rem;
-    }
 }
 
 .close-btn:hover {
@@ -482,11 +431,11 @@ nav a.active {
     margin-bottom: 0.5rem;
 }
 
+/* Meetups Thumbnails */
 .meetups-thumbnails {
     margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 columns always */
     gap: 1rem;
 }
 
@@ -495,11 +444,9 @@ nav a.active {
     cursor: pointer;
     width: 100%;
     height: auto;
-    /* Let aspect-ratio control height */
     object-fit: cover;
     transition: transform 0.3s ease;
     aspect-ratio: 1/1;
-    /* Make images square */
 }
 
 .meetups-thumbnails img:hover {
@@ -531,10 +478,27 @@ nav a.active {
     border-radius: 8px;
 }
 
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--accent-green);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: opacity 0.3s;
+}
+
+.close-modal:hover {
+    opacity: 0.8;
+}
+
+/* About Section */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Dos columnas */
     gap: 2rem;
 }
 
@@ -565,31 +529,7 @@ nav a.active {
     height: 24px;
 }
 
-/* Responsive para About */
-@media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        /* Una columna en móvil */
-    }
-}
-
-.close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    color: var(--accent-green);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: opacity 0.3s;
-}
-
-.close-modal:hover {
-    opacity: 0.8;
-}
-
+/* Utility Classes */
 .blue {
     color: var(--accent-blue);
 }
@@ -604,6 +544,60 @@ nav a.active {
 
     50% {
         opacity: 0;
+    }
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+
+/* Mobile Styles (up to 767px) */
+@media (max-width: 767px) {
+    .hamburger-btn {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(13, 22, 29, 0.98);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 99;
+        border-left: 1px solid rgba(30, 86, 96, 0.5);
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav a {
+        margin: 0;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a:last-child {
+        border-bottom: none;
+    }
+
+    .meetups-thumbnails {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .overlay {
+        border-radius: 0;
+    }
+
+    .overlay-content {
+        padding: 0 1rem 2rem 1rem;
     }
 }
 
@@ -641,7 +635,6 @@ nav a.active {
 
     .meetups-thumbnails {
         gap: 1.5rem;
-        /* Just update gap, keep 3 columns from default */
     }
 
     .overlay-content {
@@ -672,7 +665,6 @@ nav a.active {
 
     .meetups-thumbnails {
         gap: 2rem;
-        /* Just update gap, keep 3 columns from default */
     }
 }
 
@@ -706,55 +698,5 @@ nav a.active {
     .overlay {
         height: 80vh;
         max-height: 80vh;
-    }
-}
-
-/* Mobile Navigation Styles */
-@media (max-width: 767px) {
-    .hamburger-btn {
-        display: block;
-    }
-
-    nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(13, 22, 29, 0.98);
-        flex-direction: column;
-        padding: 5rem 2rem 2rem;
-        transition: right 0.3s ease;
-        z-index: 99;
-        border-left: 1px solid rgba(30, 86, 96, 0.5);
-    }
-
-    nav.active {
-        right: 0;
-    }
-
-    nav a {
-        margin: 0;
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    nav a:last-child {
-        border-bottom: none;
-    }
-
-    .meetups-thumbnails {
-        grid-template-columns: 1fr;
-        /* Show 1 column below 768px */
-    }
-
-    /* Mobile overlay adjustments */
-    .overlay {
-        border-radius: 0;
-    }
-
-    .overlay-content {
-        padding: 2rem 1rem;
     }
 }
