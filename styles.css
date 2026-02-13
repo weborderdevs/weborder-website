@@ -206,6 +206,7 @@ nav a.active {
     width: 100%;
 }
 
+
 .hero.active {
     display: flex;
     flex-direction: column;
@@ -216,13 +217,12 @@ nav a.active {
 .hero-content {
     width: 100%;
     max-width: 600px;
-    text-align: center;
 }
 
 .logo-area {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 1.5rem;
     color: var(--accent-green);
     font-weight: 800;
@@ -245,7 +245,6 @@ nav a.active {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 2rem;
-    max-width: 500px;
     font-size: 0.95rem;
     margin-left: auto;
     margin-right: auto;
@@ -254,7 +253,7 @@ nav a.active {
 /* Social Links */
 .social-links {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
     margin-bottom: 2rem;
 }
@@ -285,6 +284,8 @@ nav a.active {
     padding: 1.5rem;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-around;
     gap: 1rem;
     background: rgba(255, 255, 255, 0.02);
@@ -404,16 +405,6 @@ nav a.active {
 
     nav a:last-child {
         border-bottom: none;
-    }
-
-    .stats-card {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stat-item {
-        width: 100%;
-        margin-bottom: 1rem;
     }
 
     .stat-item:last-child {
@@ -627,19 +618,6 @@ nav a.active {
         padding: 1.5rem var(--container-padding);
     }
 
-    .hero.active {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .hero-content {
-        text-align: left;
-        max-width: 500px;
-    }
-
     .logo-area {
         flex-direction: row;
         justify-content: flex-start;
@@ -648,25 +626,6 @@ nav a.active {
     .logo-area img {
         margin-right: 1rem;
         margin-bottom: 0;
-    }
-
-    .description {
-        text-align: left;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .social-links {
-        justify-content: flex-start;
-    }
-
-    .stats-card {
-        padding: 2rem;
-        gap: 2rem;
-    }
-
-    .stat-number {
-        font-size: clamp(2rem, 4vw, 3rem);
     }
 
     .episode-card {
@@ -700,24 +659,6 @@ nav a.active {
         padding: 2rem var(--container-padding);
     }
 
-    .hero.active {
-        padding: 3rem var(--container-padding);
-        max-width: 1400px;
-    }
-
-    .hero-content {
-        max-width: 600px;
-    }
-
-    .stats-card {
-        padding: 2.5rem 3rem;
-        gap: 3rem;
-    }
-
-    .stat-number {
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
-    }
-
     .overlay {
         width: 90%;
         max-width: 1400px;
@@ -735,18 +676,31 @@ nav a.active {
     }
 }
 
-/* Large Desktop Styles (1440px and up) */
-@media (min-width: 1440px) {
+/* Large Desktop Styles (1200px and up) */
+@media (min-width: 1200px) {
     :root {
         --container-padding: 4rem;
     }
 
+    .hero {
+        width: 100%;
+    }
+
     .hero.active {
-        max-width: 1600px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
     .stats-card {
         padding: 3rem 4rem;
+        gap: 3rem;
+    }
+
+    .stat-number {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
     }
 
     .overlay {
@@ -788,20 +742,6 @@ nav a.active {
 
     nav a:last-child {
         border-bottom: none;
-    }
-
-    .stats-card {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stat-item {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-
-    .stat-item:last-child {
-        margin-bottom: 0;
     }
 
     .meetups-thumbnails {
