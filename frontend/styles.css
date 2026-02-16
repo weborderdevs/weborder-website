@@ -548,6 +548,15 @@ nav a.active {
     height: 24px;
 }
 
+.team {
+    display: flex;
+    gap: 1rem;
+}
+
+.team img {
+    max-width: 180px;
+}
+
 /* Utility Classes */
 .light {
     color: var(--text-main);
