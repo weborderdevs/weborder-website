@@ -4,15 +4,15 @@ import type { ContentfulStatusCode } from 'hono/utils/http-status';
 
 const app = new Hono();
 
-// Middleware de CORS incluido en Hono
-app.use('/api/*', cors());
+// Middleware de CORS incluido en Hono - Aplicar globalmente
+app.use('*', cors());
 
 // Bun lee automáticamente archivos .env, no necesitas 'dotenv'
 const API_TOKEN = Bun.env.INSTA_TOKEN;
 
 const INSTAGRAM_API_URL = 'https://graph.instagram.com/me/media';
 const INSTAGRAM_URL_FIELDS =
-    'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp';
+    'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,children{media_url}';
 const INSTAGRAM_URL_POSTS = '6';
 
 const FULL_INSTAGRAM_API_URL = `${INSTAGRAM_API_URL}?fields=${INSTAGRAM_URL_FIELDS}&limit=${INSTAGRAM_URL_POSTS}&access_token=${API_TOKEN}`;
@@ -27,7 +27,7 @@ function isSameDay(date1: Date, date2: Date): boolean {
 
 app.get('/instagram', async (c) => {
     try {
-        const filePath = './instagram-data.json';
+        const filePath = './backend/instagram-data.json';
         const today = new Date();
         let cachedData: any = null;
         let shouldFetchAPI = true;
@@ -44,8 +44,6 @@ app.get('/instagram', async (c) => {
                     shouldFetchAPI = false;
                     return c.json({
                         data: cachedData.data,
-                        date: cachedData.date,
-                        cached: true,
                     });
                 }
             }
@@ -74,7 +72,7 @@ app.get('/instagram', async (c) => {
             // Guardar en archivo JSON
             await Bun.write(filePath, JSON.stringify(dataWithDate, null, 2));
 
-            return c.json(dataWithDate);
+            return c.json(data);
         }
     } catch (error) {
         return c.json({ error: 'Fallo en el servidor proxy' }, 500);
