@@ -1,0 +1,47 @@
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Dependencies
+node_modules/
+yarn.lock
+package-lock.json
+bun.lockb
+
+# Build outputs
+dist/
+out/
+*.tgz
+
+# Bun cache
+.bun/
+
+# Code coverage
+coverage/
+*.lcov
+
+# Logs
+logs/
+*.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Caches
+.eslintcache
+.cache

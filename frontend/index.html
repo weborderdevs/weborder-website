@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WeBorder Developers</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script src="https://unpkg.com/feather-icons"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="header-logo">
+                <a
+                    href="#"
+                    onclick="hideOverlay(true)"
+                    aria-label="Volver al inicio"
+                >
+                    <img src="img/logo.png" alt="Weborder Logo" />
+                </a>
+            </div>
+            <button
+                class="hamburger-btn"
+                onclick="toggleMenu()"
+                aria-label="Abrir menú"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="hamburger-icon"
+                >
+                    <line
+                        x1="3"
+                        y1="12"
+                        x2="21"
+                        y2="12"
+                        class="hamburger-line hamburger-line-middle"
+                    ></line>
+                    <line
+                        x1="3"
+                        y1="6"
+                        x2="21"
+                        y2="6"
+                        class="hamburger-line hamburger-line-top"
+                    ></line>
+                    <line
+                        x1="3"
+                        y1="18"
+                        x2="21"
+                        y2="18"
+                        class="hamburger-line hamburger-line-bottom"
+                    ></line>
+                </svg>
+            </button>
+            <nav>
+                <a
+                    href="#"
+                    onclick="showOverlay('podcast-view')"
+                    class="menu podcast-view"
+                    aria-label="Ver Podcast"
+                    >[<b>P</b>]odcast</a
+                >
+                <a
+                    href="#"
+                    onclick="showOverlay('meetups-view')"
+                    class="menu meetups-view"
+                    aria-label="Ver Meetups"
+                    >[<b>M</b>]eetups</a
+                >
+                <a
+                    href="#"
+                    onclick="showOverlay('about-view')"
+                    class="menu about-view"
+                    aria-label="Acerca de"
+                    >[<b>A</b>]cerca</a
+                >
+            </nav>
+        </header>
+
+        <main id="hero" class="hero active">
+            <section class="hero-content">
+                <div class="logo-area">
+                    <img src="img/logo.png" alt="Weborder Logo" />
+                </div>
+
+                <h1>Creando Comunidad<span class="typing-cursor">_</span></h1>
+
+                <p class="description">
+                    Generando y compartiendo conocimiento para fortalecer a
+                    México y otros países de habla hispana en materia de
+                    programación y tecnología desde el borderplex.
+                </p>
+
+                <div class="social-links">
+                    <a
+                        href="https://discord.gg/pGg96N5RVF"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Únete a nuestro Discord"
+                    >
+                        <svg
+                            class="social-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                            ></path>
+                        </svg>
+                    </a>
+                    <a
+                        href="https://www.facebook.com/groups/weborderdev"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Visita nuestro Facebook"
+                    >
+                        <svg
+                            class="social-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                            ></path>
+                        </svg>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/weborderdevs"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Síguenos en Instagram"
+                    >
+                        <svg
+                            class="social-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <rect
+                                x="2"
+                                y="2"
+                                width="20"
+                                height="20"
+                                rx="5"
+                                ry="5"
+                            ></rect>
+                            <path
+                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                            ></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a
+                        href="https://www.youtube.com/@weborderdevs"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Suscríbete a nuestro YouTube"
+                    >
+                        <svg
+                            class="social-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.96c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96c.47-1.74.47-5.58.47-5.58s0-3.84-.47-5.58z"
+                            ></path>
+                            <polygon
+                                points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                            ></polygon>
+                        </svg>
+                    </a>
+                    <a
+                        href="https://github.com/weborderdevs"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Visita nuestro GitHub"
+                    >
+                        <svg
+                            class="social-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                            ></path>
+                        </svg>
+                    </a>
+                    <a
+                        href="https://www.tiktok.com/@weborderdevs"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Síguenos en TikTok"
+                    >
+                        <svg
+                            class="social-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="38"
+                            height="38"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"
+                            ></path>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+
+            <section class="hero-stats">
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Miembros</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Episodios</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Tutoriales</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section id="podcast-view" class="overlay">
+            <span class="overlay-bullet">&bull;</span>
+            <button
+                class="close-btn"
+                onclick="hideOverlay(true)"
+                aria-label="Cerrar"
+            >
+                [X]
+            </button>
+            <div class="overlay-container">
+                <h2>WeBorder Podcast</h2>
+                <div class="overlay-content">
+                    <h3>Tu update semanal de tecnología y cultura geek.</h3>
+                    <p>
+                        Analizamos las noticias más recientes del mundo tech,
+                        videojuegos y tendencias digitales desde la perspectiva
+                        de desarrolladores. Discusiones profundas, debates con
+                        conocimiento y pura pasión por el código.
+                    </p>
+                    <p>
+                        <span class="light"
+                            >Stream en vivo <u>casi</u> todos los viernes 19:00
+                            MST por
+                        </span>
+                        <a
+                            href="https://www.youtube.com/@weborderdevs"
+                            target="_blank"
+                            rel="noopener"
+                            >youtube</a
+                        >.<br />
+                        ¡Suscríbete a nuestro canal para que no te los pierdas!
+                    </p>
+
+                    <article class="episode-card">
+                        <div class="episode-thumb">
+                            <div class="thumb-placeholder">
+                                <!-- <i data-feather="play-circle"></i> -->
+                            </div>
+                        </div>
+                        <div class="episode-info">
+                            <span class="ep-number">Episodio 2</span>
+                            <h3 class="overlay-title">
+                                Programación orientada a nada
+                            </h3>
+                            <p>
+                                Generando y compartiendo conocimiento para
+                                fortalecer al área del borderplex, México y
+                                otros países de habla hispana.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="episode-card">
+                        <div class="episode-thumb">
+                            <div class="thumb-placeholder">
+                                <!-- <i data-feather="play-circle"></i> -->
+                            </div>
+                        </div>
+                        <div class="episode-info">
+                            <span class="ep-number">Episodio 1</span>
+                            <h3 class="overlay-title">
+                                El inicio del comienzo
+                            </h3>
+                            <p>
+                                Generando y compartiendo conocimiento para
+                                fortalecer al área del borderplex, México y
+                                otros países de habla hispana.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="meetups-view" class="overlay">
+            <span class="overlay-bullet">&bull;</span>
+            <button
+                class="close-btn"
+                onclick="hideOverlay(true)"
+                aria-label="Cerrar"
+            >
+                [X]
+            </button>
+            <div class="overlay-container">
+                <h2>Meetups</h2>
+                <div class="overlay-content">
+                    <h3>Sal de la terminal y únete a la comunidad.</h3>
+                    <p>
+                        Encuentros presenciales y virtuales donde la comunidad
+                        se reúne para hablar de desarrollo, tecnología y
+                        experiencia real.
+                    </p>
+
+                    <div class="meetups-thumbnails"></div>
+                </div>
+            </div>
+
+            <div class="image-modal" onclick="closeImageModal()">
+                <button
+                    class="close-modal"
+                    onclick="closeImageModal()"
+                    aria-label="Cerrar imagen"
+                >
+                    [X]
+                </button>
+                <img
+                    src="img/meetups/meetup-1-1.jpg"
+                    alt="Meetup 1"
+                    onclick="event.stopPropagation()"
+                />
+            </div>
+        </section>
+
+        <section id="about-view" class="overlay">
+            <span class="overlay-bullet">&bull;</span>
+            <button
+                class="close-btn"
+                onclick="hideOverlay(true)"
+                aria-label="Cerrar"
+            >
+                [X]
+            </button>
+            <div class="overlay-container">
+                <h2>Acerca de WeBorder</h2>
+                <div class="overlay-content">
+                    <h3>Código, comunidad y colaboración sin fronteras.</h3>
+                    <br />
+
+                    <h3 class="blue">Quiénes somos</h3>
+                    <p>
+                        Somos una comunidad abierta de profesionales y
+                        entusiastas del desarrollo de software nacida en la
+                        región del Borderplex (Juárez, El Paso y Las Cruces).
+                        Tenemos un objetivo claro: descentralizar el
+                        conocimiento y demostrar que en la frontera se crea
+                        tecnología de clase mundial.
+                    </p>
+                    <h3 class="blue">Nuestra misión</h3>
+                    <p>
+                        Buscamos fortalecer las habilidades técnicas y humanas
+                        de nuestros miembros a través de la colaboración.
+                        Creemos que el éxito no es un juego de suma cero; si uno
+                        crece, todos crecemos.
+                    </p>
+
+                    <h3 class="blue">Lo que hacemos</h3>
+                    <br />
+                    <div class="about-grid">
+                        <div class="about-item">
+                            <div class="about-icon">
+                                <i data-feather="mic"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: #fff; margin-bottom: 0.5rem">
+                                    Podcast & Debates
+                                </h4>
+                                <p
+                                    style="
+                                        font-size: 0.9rem;
+                                        color: var(--text-secondary);
+                                    "
+                                >
+                                    Tu dosis semanal de noticias de tecnología,
+                                    cultura geek y debates sobre la industria.
+                                    Análisis sin filtros transmitido en vivo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-item">
+                            <div class="about-icon">
+                                <i data-feather="youtube"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: #fff; margin-bottom: 0.5rem">
+                                    Video Tutoriales
+                                </h4>
+                                <p
+                                    style="
+                                        font-size: 0.9rem;
+                                        color: var(--text-secondary);
+                                    "
+                                >
+                                    Contenido educativo "evergreen" de alta
+                                    calidad. Desde "Hola Mundo" hasta
+                                    arquitecturas complejas, disponible gratis
+                                    en nuestro canal.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-item">
+                            <div class="about-icon">
+                                <i data-feather="users"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: #fff; margin-bottom: 0.5rem">
+                                    Meetups Presenciales
+                                </h4>
+                                <p
+                                    style="
+                                        font-size: 0.9rem;
+                                        color: var(--text-secondary);
+                                    "
+                                >
+                                    El punto de reunión físico para hacer
+                                    networking, compartir pizzas y escuchar
+                                    charlas técnicas de expertos locales e
+                                    invitados.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-item">
+                            <div class="about-icon">
+                                <i data-feather="code"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: #fff; margin-bottom: 0.5rem">
+                                    Colaboración
+                                </h4>
+                                <p
+                                    style="
+                                        font-size: 0.9rem;
+                                        color: var(--text-secondary);
+                                    "
+                                >
+                                    Fomentamos el Open Source y la mentoría.
+                                    Conectamos talento junior con empresas y
+                                    desarrolladores senior.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <h3 class="blue">Kernel Team</h3>
+                    <br />
+                    <div class="team">
+                        <div>
+                            <a
+                                href="https://www.linkedin.com/in/talamantesvictor/"
+                                target="_blank"
+                            >
+                                <img
+                                    src="img/team/victor.webp"
+                                    alt="Victor Talamantes"
+                                /> </a
+                            ><br />
+                            Victor
+                        </div>
+                        <div>
+                            <a href="https://www.3raul.com/" target="_blank">
+                                <img
+                                    src="img/team/raul.webp"
+                                    alt="Raúl Ruiz"
+                                /> </a
+                            ><br />
+                            Raúl
+                        </div>
+                        <div>
+                            <a
+                                href="https://www.linkedin.com/in/efrengonzalez/"
+                                target="_blank"
+                            >
+                                <img
+                                    src="img/team/efren.webp"
+                                    alt="Efren González"
+                                /> </a
+                            ><br />
+                            Efren
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="scripts.js"></script>
+    </body>
+</html>
