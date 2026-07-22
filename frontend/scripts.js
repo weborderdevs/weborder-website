@@ -360,7 +360,7 @@ async function fetchMeetupImagesFromInstagram() {
 
 const TERMINAL_MESSAGES = [
     { cmd: 'weborder --members', output: '100+ conectados\n12 en línea ahorita' },
-    { cmd: 'ping borderplex', output: '42ms — comunidad activa\n0% packet loss' },
+    { cmd: 'ping borderplex', output: '42ms — comunidad activa\n0% packet loss\nJuarez | El Paso | Las Cruces' },
     { cmd: 'crontab -l', output: 'Viernes 19:00 MST\nPodcast en vivo' },
     { cmd: 'ls comunidad/', output: 'podcast/  meetups/\ntutoriales/  mentorias/' },
     { cmd: 'cat proximo-evento', output: 'Meetup presencial\nAgosto 12 — 18:00 hrs' },
