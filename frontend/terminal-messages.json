@@ -9,7 +9,7 @@
   },
   {
     "cmd": "cat /etc/kernel-team",
-    "output": "Victor Talamantes\nEfren Gonzalez\nRaul Ruiz"
+    "output": "Victor Talamantes\nRaul Ruiz\nEfren Gonzalez"
   },
   {
     "cmd": "ping borderplex",
