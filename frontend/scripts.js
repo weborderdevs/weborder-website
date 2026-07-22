@@ -358,20 +358,26 @@ async function fetchMeetupImagesFromInstagram() {
 // Terminal Output
 // ============================================================================
 
-const TERMINAL_MESSAGES = [
-  { cmd: 'weborder --stats', output: '100+ miembros\n6 meetups\n2 tutoriales' },
-  { cmd: 'weborder --members', output: 'Desarrolladores\nEntusiastas de tecnología' },
-  { cmd: 'cat /etc/kernel-team', output: 'Victor Talamantes\nEfren Gonzalez\nRaul Ruiz' },
-  { cmd: 'ping borderplex', output: '42ms — comunidad activa\nJuarez, El Paso & Las Cruces\n0% packet loss' },
-  { cmd: 'crontab -l', output: 'Viernes 19:00 MST\nPodcast en vivo' },
-  { cmd: 'ls comunidad/', output: 'podcast/  meetups/\ntutoriales/  conocimiento/' },
-  { cmd: 'neofetch', output: 'OS: WeBorder Developers\nHost: borderplex\nKernel: 6.8-comunidad' },
-];
+let terminalMessages = [];
 
 const termState = {
   index: 0,
   running: true,
 };
+
+async function loadTerminalMessages() {
+  try {
+    const res = await fetch('terminal-messages.json');
+    if (!res.ok) throw new Error('Failed to load terminal messages');
+    terminalMessages = await res.json();
+  } catch (err) {
+    console.error('Error loading terminal messages:', err);
+    terminalMessages = [
+      { cmd: 'weborder --stats', output: '100+ miembros\n6 meetups\n2 tutoriales' },
+      { cmd: 'cat /etc/kernel-team', output: 'Victor Talamantes\nEfren Gonzalez\nRaul Ruiz' },
+    ];
+  }
+}
 
 function typeChar(el, text, i, speed, done) {
   if (i < text.length) {
@@ -390,7 +396,7 @@ function startTerminal() {
     if (!termState.running) return;
 
     output.innerHTML = '';
-    const msg = TERMINAL_MESSAGES[termState.index % TERMINAL_MESSAGES.length];
+    const msg = terminalMessages[termState.index % terminalMessages.length];
     termState.index++;
 
     const cmdLine = document.createElement('div');
@@ -573,13 +579,14 @@ function initEventListeners() {
 /**
  * Initialize the application
  */
-function init() {
+async function init() {
   console.log('Weborder Developers - Initializing...');
 
   // Initialize event listeners
   initEventListeners();
 
-  // Start terminal output
+  // Load terminal messages from JSON
+  await loadTerminalMessages();
   startTerminal();
 
   // Fetch and process Instagram media
