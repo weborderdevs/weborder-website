@@ -355,6 +355,70 @@ async function fetchMeetupImagesFromInstagram() {
 }
 
 // ============================================================================
+// Terminal Output
+// ============================================================================
+
+const TERMINAL_MESSAGES = [
+    { cmd: 'weborder --members', output: '100+ conectados\n12 en línea ahorita' },
+    { cmd: 'ping borderplex', output: '42ms — comunidad activa\n0% packet loss' },
+    { cmd: 'crontab -l', output: 'Viernes 19:00 MST\nPodcast en vivo' },
+    { cmd: 'ls comunidad/', output: 'podcast/  meetups/\ntutoriales/  mentorias/' },
+    { cmd: 'cat proximo-evento', output: 'Meetup presencial\nAgosto 12 — 18:00 hrs' },
+    { cmd: 'curl -s weborder.dev/live', output: '3 canales activos\nconversando de Go y Rust' },
+];
+
+const termState = {
+    index: 0,
+    running: true,
+};
+
+function typeChar(el, text, i, speed, done) {
+    if (i < text.length) {
+        el.textContent += text[i];
+        setTimeout(() => typeChar(el, text, i + 1, speed, done), speed);
+    } else if (done) {
+        done();
+    }
+}
+
+function startTerminal() {
+    const output = document.querySelector('.terminal-output');
+    if (!output) return;
+
+    function cycle() {
+        if (!termState.running) return;
+
+        output.innerHTML = '';
+        const msg = TERMINAL_MESSAGES[termState.index % TERMINAL_MESSAGES.length];
+        termState.index++;
+
+        const cmdLine = document.createElement('div');
+        cmdLine.innerHTML = '<span class="terminal-prompt">❯ </span>';
+        output.appendChild(cmdLine);
+
+        typeChar(cmdLine, msg.cmd, 0, 40, () => {
+            const outLine = document.createElement('div');
+            outLine.style.color = 'var(--text-secondary)';
+            output.appendChild(outLine);
+
+            typeChar(outLine, msg.output, 0, 20, () => {
+                const cursor = document.createElement('span');
+                cursor.className = 'terminal-cursor';
+                cursor.textContent = '_';
+                output.appendChild(cursor);
+                setTimeout(() => {
+                    if (termState.running) {
+                        setTimeout(cycle, 1000);
+                    }
+                }, 3000);
+            });
+        });
+    }
+
+    setTimeout(cycle, 800);
+}
+
+// ============================================================================
 // Image Modal Functions
 // ============================================================================
 
@@ -513,6 +577,9 @@ function init() {
 
     // Initialize event listeners
     initEventListeners();
+
+    // Start terminal output
+    startTerminal();
 
     // Fetch and process Instagram media
     fetchMeetupImagesFromInstagram()

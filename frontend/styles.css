@@ -295,6 +295,32 @@ nav a.active {
     filter: drop-shadow(0 0 5px var(--accent-green));
 }
 
+/* Terminal Output */
+.terminal {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 2rem;
+    min-height: 4.5rem;
+    font-size: 0.8rem;
+    line-height: 1.7;
+}
+
+.terminal-output {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.terminal-prompt {
+    color: var(--accent-blue);
+}
+
+.terminal-cursor {
+    animation: blink 1s infinite;
+    color: var(--accent-green);
+}
+
 /* Stats Section */
 .hero-stats {
     width: 100%;
