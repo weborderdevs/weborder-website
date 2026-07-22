@@ -365,6 +365,9 @@ const TERMINAL_MESSAGES = [
     { cmd: 'ls comunidad/', output: 'podcast/  meetups/\ntutoriales/  mentorias/' },
     { cmd: 'cat proximo-evento', output: 'Meetup presencial\nAgosto 12 — 18:00 hrs' },
     { cmd: 'curl -s weborder.dev/live', output: '3 canales activos\nconversando de Go y Rust' },
+    { cmd: 'cat /etc/kernel-team', output: 'Victor Talamantes\nEfren Gonzalez\nRaul Ruiz' },
+    { cmd: 'weborder --stats', output: '100+ miembros\n6 meetups\n2 tutoriales' },
+    { cmd: 'neofetch', output: 'OS: WeBorder Linux\nHost: borderplex\nKernel: 6.8-comunidad' },
 ];
 
 const termState = {
