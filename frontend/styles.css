@@ -34,7 +34,6 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     line-height: 1.5;
-    padding-bottom: 4rem;
 }
 
 /* Typography */
@@ -49,7 +48,7 @@ h6 {
 }
 
 h1 {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     text-transform: uppercase;
     margin-bottom: 1rem;
 }
@@ -85,8 +84,13 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
+    background: var(--bg-color);
+    background-image: var(--bg-gradient);
 }
 
 .header-logo img {
@@ -204,6 +208,7 @@ nav a.active {
     display: none;
     flex-grow: 1;
     padding: var(--section-gap) var(--container-padding);
+    padding-top: 5rem;
     width: 100%;
     background-image:
         linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
@@ -239,13 +244,14 @@ nav a.active {
 
 .hero-content {
     width: 100%;
-    max-width: 600px;
+    max-width: 580px;
+    text-align: center;
 }
 
 .logo-area {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 1.5rem;
     color: var(--accent-green);
     font-weight: 800;
@@ -254,7 +260,7 @@ nav a.active {
 
 .logo-area img {
     width: auto;
-    max-height: 3rem;
+    max-height: 5rem;
     max-width: 100%;
     margin-bottom: 0.5rem;
 }
@@ -267,8 +273,8 @@ nav a.active {
 .description {
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
+    margin-bottom: 0;
+    font-size: 1rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -276,15 +282,16 @@ nav a.active {
 /* Social Links */
 .social-links {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 540px;
 }
 
 .social-icon {
     color: var(--accent-green);
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
     border: 1px solid transparent;
@@ -298,14 +305,14 @@ nav a.active {
 /* Terminal Section */
 .terminal-section {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 .terminal {
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 1.7;
     overflow: hidden;
 }
@@ -703,11 +710,11 @@ nav a.active {
 
     .logo-area {
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .logo-area img {
-        margin-right: 1rem;
+        margin-right: 0.75rem;
         margin-bottom: 0;
     }
 
@@ -762,17 +769,6 @@ nav a.active {
 @media (min-width: 1200px) {
     :root {
         --container-padding: 4rem;
-    }
-
-    .hero {
-        width: 100%;
-    }
-
-    .hero.active {
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 1400px;
-        margin: 0 auto;
     }
 
     .overlay {
