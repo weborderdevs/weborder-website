@@ -305,10 +305,52 @@ nav a.active {
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 0.75rem 1rem;
-    min-height: 4.5rem;
     font-size: 0.8rem;
     line-height: 1.7;
+    overflow: hidden;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background: #ff5f57;
+}
+
+.dot-yellow {
+    background: #febc2e;
+}
+
+.dot-green {
+    background: #28c840;
+}
+
+.terminal-title {
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    margin: 0 auto;
+}
+
+.terminal-body {
+    padding: 0.75rem 1rem;
+    min-height: 4.5rem;
 }
 
 .terminal-output {
