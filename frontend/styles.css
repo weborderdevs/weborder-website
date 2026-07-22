@@ -295,13 +295,17 @@ nav a.active {
     filter: drop-shadow(0 0 5px var(--accent-green));
 }
 
-/* Terminal Output */
+/* Terminal Section */
+.terminal-section {
+    width: 100%;
+    max-width: 600px;
+}
+
 .terminal {
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 0.75rem 1rem;
-    margin-bottom: 2rem;
     min-height: 4.5rem;
     font-size: 0.8rem;
     line-height: 1.7;
@@ -319,48 +323,6 @@ nav a.active {
 .terminal-cursor {
     animation: blink 1s infinite;
     color: var(--accent-green);
-}
-
-/* Stats Section */
-.hero-stats {
-    width: 100%;
-    max-width: 600px;
-}
-
-.stats-card {
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(5px);
-}
-
-.stat-item {
-    text-align: center;
-    min-width: 80px;
-    flex: 1;
-}
-
-.stat-number {
-    display: block;
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    font-weight: 700;
-    color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    margin-bottom: 0.25rem;
-}
-
-.stat-label {
-    color: var(--text-secondary);
-    font-size: clamp(0.7rem, 3vw, 1rem);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
 }
 
 /* Overlay Components */
@@ -763,11 +725,6 @@ nav a.active {
         justify-content: space-between;
         max-width: 1400px;
         margin: 0 auto;
-    }
-
-    .stats-card {
-        padding: 3rem 4rem;
-        gap: 3rem;
     }
 
     .overlay {
