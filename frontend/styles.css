@@ -281,10 +281,15 @@ nav a.active {
 /* Social Links */
 .social-links {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    max-width: 540px;
+    max-width: 630px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
 }
 
 .social-icon {
@@ -299,6 +304,28 @@ nav a.active {
 .social-icon:hover {
     transform: translateY(-3px);
     filter: drop-shadow(0 0 5px var(--accent-green));
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border: 1.5px solid var(--accent-green);
+    border-radius: 50px;
+    color: var(--accent-green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--accent-green);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    opacity: 1;
 }
 
 /* Terminal Section */
@@ -677,6 +704,12 @@ nav a.active {
 
     nav a:last-child {
         border-bottom: none;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
     }
 
     .meetups-thumbnails {
