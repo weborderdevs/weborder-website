@@ -207,8 +207,7 @@ nav a.active {
 .hero {
     display: none;
     flex-grow: 1;
-    padding: var(--section-gap) var(--container-padding);
-    padding-top: 5rem;
+    padding: 4rem var(--container-padding);
     width: 100%;
     background-image:
         linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
