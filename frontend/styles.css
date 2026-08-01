@@ -69,7 +69,9 @@ a:active,
 a:visited {
     color: var(--accent-green);
     text-decoration: none;
-    transition: opacity 0.3s, text-shadow 0.3s;
+    transition:
+        opacity 0.3s,
+        text-shadow 0.3s;
 }
 
 a:hover {
@@ -142,7 +144,9 @@ nav a.active {
     color: var(--accent-green);
     cursor: pointer;
     padding: 0.5rem;
-    transition: opacity 0.3s, text-shadow 0.3s;
+    transition:
+        opacity 0.3s,
+        text-shadow 0.3s;
     z-index: 101;
     position: relative;
     width: 24px;
@@ -223,7 +227,11 @@ nav a.active {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.04) 0%, transparent 60%);
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 255, 255, 0.04) 0%,
+        transparent 60%
+    );
     pointer-events: none;
     z-index: 0;
 }
@@ -297,7 +305,9 @@ nav a.active {
     width: 32px;
     height: 32px;
     cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
+    transition:
+        transform 0.2s,
+        filter 0.2s;
     border: 1px solid transparent;
 }
 
@@ -432,7 +442,7 @@ nav a.active {
 }
 
 .overlay-bullet {
-    position:absolute;
+    position: absolute;
     left: 1rem;
     top: 1rem;
     font-size: 1.5rem;
@@ -503,6 +513,8 @@ nav a.active {
     padding: 1rem;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.02);
+
+    cursor: pointer;
 }
 
 .episode-thumb {
@@ -517,8 +529,21 @@ nav a.active {
     box-shadow:
         inset 0 0 20px rgba(0, 255, 65, 0.15),
         0 0 10px rgba(0, 255, 65, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     flex: 1;
+    overflow: hidden;
+}
+
+.episode-thumb img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.episode-thumb svg {
+    position: absolute;
 }
 
 .episode-thumb:hover {
@@ -658,7 +683,6 @@ nav a.active {
 
 /* Animations */
 @keyframes blink {
-
     0%,
     100% {
         opacity: 1;

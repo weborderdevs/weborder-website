@@ -6,12 +6,12 @@ Sitio web SPA + API proxy de Instagram para la comunidad [WeBorder Developers](h
 
 ## Tech Stack
 
-| Capa | Tecnología |
-|------|-----------|
+| Capa     | Tecnología                             |
+| -------- | -------------------------------------- |
 | Frontend | Vanilla JavaScript (ES6+), HTML5, CSS3 |
-| Backend | Bun, Hono, TypeScript |
-| Fuentes | JetBrains Mono, Caveat |
-| Iconos | Feather Icons |
+| Backend  | Bun, Hono, TypeScript                  |
+| Fuentes  | JetBrains Mono, Caveat                 |
+| Iconos   | Feather Icons                          |
 
 ## Estructura
 
@@ -55,9 +55,9 @@ Abrir `http://localhost:8080`.
 
 ## Variables de entorno
 
-| Variable | Descripción |
-|----------|-------------|
-| `INSTA_TOKEN` | Token de acceso a Instagram Graph API (requerido para `/instagram`) |
+| Variable      | Descripción                                                                                                                                                                       |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `INSTA_TOKEN` | Token de acceso a Instagram Graph API (requerido para `/instagram`), para generarlo, se debe entrar en https://developers.facebook.com/apps/[appid]/instagram-business/API-Setup/ |
 
 ## Mensajes de la terminal
 

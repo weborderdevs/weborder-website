@@ -8,7 +8,8 @@ const app = new Hono();
 app.use('*', cors());
 
 const INSTAGRAM_API_URL = 'https://graph.instagram.com/me/media';
-const INSTAGRAM_REFRESH_URL = 'https://graph.instagram.com/refresh_access_token';
+const INSTAGRAM_REFRESH_URL =
+    'https://graph.instagram.com/refresh_access_token';
 const INSTAGRAM_URL_FIELDS =
     'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,children{media_url}';
 const INSTAGRAM_URL_POSTS = '6';
@@ -23,10 +24,16 @@ async function updateEnvToken(newToken: string): Promise<void> {
     const content = await file.text();
     const now = new Date().toISOString();
 
-    let updated = content.replace(/^INSTA_TOKEN=.*/m, `INSTA_TOKEN=${newToken}`);
+    let updated = content.replace(
+        /^INSTA_TOKEN=.*/m,
+        `INSTA_TOKEN=${newToken}`,
+    );
 
     if (/^INSTA_TOKEN_LAST_REFRESH=.*/m.test(updated)) {
-        updated = updated.replace(/^INSTA_TOKEN_LAST_REFRESH=.*/m, `INSTA_TOKEN_LAST_REFRESH=${now}`);
+        updated = updated.replace(
+            /^INSTA_TOKEN_LAST_REFRESH=.*/m,
+            `INSTA_TOKEN_LAST_REFRESH=${now}`,
+        );
     } else {
         updated += `\nINSTA_TOKEN_LAST_REFRESH=${now}`;
     }
@@ -39,20 +46,28 @@ async function getValidToken(): Promise<string> {
 
     const lastRefreshStr = Bun.env.INSTA_TOKEN_LAST_REFRESH;
     const lastRefresh = lastRefreshStr ? new Date(lastRefreshStr) : new Date(0);
-    const daysSinceRefresh = (Date.now() - lastRefresh.getTime()) / (1000 * 60 * 60 * 24);
+    const daysSinceRefresh =
+        (Date.now() - lastRefresh.getTime()) / (1000 * 60 * 60 * 24);
 
     if (daysSinceRefresh >= TOKEN_REFRESH_DAYS) {
-        console.log(`Token tiene ${Math.floor(daysSinceRefresh)} días, renovando...`);
+        console.log(
+            `Token tiene ${Math.floor(daysSinceRefresh)} días, renovando...`,
+        );
         const refreshRes = await fetch(
-            `${INSTAGRAM_REFRESH_URL}?grant_type=ig_refresh_token&access_token=${currentToken}`
+            `${INSTAGRAM_REFRESH_URL}?grant_type=ig_refresh_token&access_token=${currentToken}`,
         );
 
         if (!refreshRes.ok) {
-            console.error('Error al renovar token de Instagram:', await refreshRes.text());
+            console.error(
+                'Error al renovar token de Instagram:',
+                await refreshRes.text(),
+            );
             return currentToken;
         }
 
-        const refreshData = await refreshRes.json() as { access_token: string };
+        const refreshData = (await refreshRes.json()) as {
+            access_token: string;
+        };
         currentToken = refreshData.access_token;
         await updateEnvToken(currentToken);
         console.log('Token de Instagram renovado exitosamente');
@@ -75,6 +90,7 @@ app.get('/instagram', async (c) => {
         const today = new Date();
         let cachedData: any = null;
         let shouldFetchAPI = true;
+        console.log(currentToken);
 
         try {
             const file = Bun.file(filePath);
