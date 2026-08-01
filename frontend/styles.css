@@ -34,7 +34,6 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     line-height: 1.5;
-    padding-bottom: 4rem;
 }
 
 /* Typography */
@@ -49,7 +48,7 @@ h6 {
 }
 
 h1 {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     text-transform: uppercase;
     margin-bottom: 1rem;
 }
@@ -85,8 +84,13 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
+    background: var(--bg-color);
+    background-image: var(--bg-gradient);
 }
 
 .header-logo img {
@@ -203,8 +207,30 @@ nav a.active {
 .hero {
     display: none;
     flex-grow: 1;
-    padding: var(--section-gap) var(--container-padding);
+    padding: 4rem var(--container-padding);
     width: 100%;
+    background-image:
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero.active {
@@ -217,13 +243,14 @@ nav a.active {
 
 .hero-content {
     width: 100%;
-    max-width: 600px;
+    max-width: 630px;
+    text-align: center;
 }
 
 .logo-area {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 1.5rem;
     color: var(--accent-green);
     font-weight: 800;
@@ -232,7 +259,7 @@ nav a.active {
 
 .logo-area img {
     width: auto;
-    max-height: 3rem;
+    max-height: 5rem;
     max-width: 100%;
     margin-bottom: 0.5rem;
 }
@@ -245,8 +272,8 @@ nav a.active {
 .description {
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
+    margin-bottom: 0;
+    font-size: 1rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -254,15 +281,21 @@ nav a.active {
 /* Social Links */
 .social-links {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 630px;
+}
+
+.social-icons {
+    display: flex;
     gap: 1rem;
-    margin-bottom: 2rem;
 }
 
 .social-icon {
     color: var(--accent-green);
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
     border: 1px solid transparent;
@@ -273,46 +306,104 @@ nav a.active {
     filter: drop-shadow(0 0 5px var(--accent-green));
 }
 
-/* Stats Section */
-.hero-stats {
-    width: 100%;
-    max-width: 600px;
-}
-
-.stats-card {
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+.cta-button {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-around;
-    gap: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(5px);
-}
-
-.stat-item {
-    text-align: center;
-    min-width: 80px;
-    flex: 1;
-}
-
-.stat-number {
-    display: block;
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border: 1.5px solid var(--accent-green);
+    border-radius: 50px;
+    color: var(--accent-green);
+    font-size: 0.85rem;
     font-weight: 700;
-    color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    margin-bottom: 0.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
-.stat-label {
+.cta-button:hover {
+    background: var(--accent-green);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    opacity: 1;
+}
+
+/* Terminal Section */
+.terminal-section {
+    width: 100%;
+    max-width: 700px;
+}
+
+.terminal {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    overflow: hidden;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background: #ff5f57;
+}
+
+.dot-yellow {
+    background: #febc2e;
+}
+
+.dot-green {
+    background: #28c840;
+}
+
+.terminal-title {
     color: var(--text-secondary);
-    font-size: clamp(0.7rem, 3vw, 1rem);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin: 0 auto;
+}
+
+.terminal-body {
+    padding: 0.75rem 1rem;
+    height: 8.2rem;
+    overflow: hidden;
+}
+
+.terminal-output {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.terminal-prompt {
+    color: var(--accent-blue);
+}
+
+.terminal-cursor {
+    animation: blink 1s infinite;
+    color: var(--accent-green);
 }
 
 /* Overlay Components */
@@ -615,6 +706,12 @@ nav a.active {
         border-bottom: none;
     }
 
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
     .meetups-thumbnails {
         grid-template-columns: 1fr;
     }
@@ -645,11 +742,11 @@ nav a.active {
 
     .logo-area {
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .logo-area img {
-        margin-right: 1rem;
+        margin-right: 0.75rem;
         margin-bottom: 0;
     }
 
@@ -704,22 +801,6 @@ nav a.active {
 @media (min-width: 1200px) {
     :root {
         --container-padding: 4rem;
-    }
-
-    .hero {
-        width: 100%;
-    }
-
-    .hero.active {
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .stats-card {
-        padding: 3rem 4rem;
-        gap: 3rem;
     }
 
     .overlay {

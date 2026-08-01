@@ -1,0 +1,30 @@
+[
+  {
+    "cmd": "weborder --stats",
+    "output": "100+ miembros\n6 meetups\n2 tutoriales"
+  },
+  {
+    "cmd": "weborder --members",
+    "output": "Desarrolladores\nEntusiastas de la tecnolog\u00eda"
+  },
+  {
+    "cmd": "cat /etc/kernel-team",
+    "output": "Victor Talamantes\nRaul Ruiz\nEfren Gonzalez"
+  },
+  {
+    "cmd": "ping borderplex",
+    "output": "42ms \u2014 comunidad activa\nJuarez, El Paso & Las Cruces\n0% packet loss"
+  },
+  {
+    "cmd": "crontab -l",
+    "output": "Viernes 19:00 MST\nPodcast en vivo"
+  },
+  {
+    "cmd": "ls comunidad/",
+    "output": "podcast/  meetups/\ntutoriales/  conocimiento/"
+  },
+  {
+    "cmd": "neofetch",
+    "output": "OS: WeBorder Developers\nHost: borderplex\nKernel: 6.8-comunidad"
+  }
+]
