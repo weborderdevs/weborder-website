@@ -5,59 +5,59 @@ feather.replace();
 // ============================================================================
 
 const DOM = {
-  hero: document.getElementById('hero'),
-  overlays: document.getElementsByClassName('overlay'),
-  menus: document.getElementsByClassName('menu'),
-  headerLogo: document.querySelector('.header-logo img'),
-  hamburgerBtn: document.querySelector('.hamburger-btn'),
-  nav: document.querySelector('nav'),
-  meetupsThumbnails: document.querySelector('.meetups-thumbnails'),
-  imageModal: document.querySelector('.image-modal'),
-  modalImage: document.querySelector('.image-modal img'),
-  closeModalBtn: document.querySelector('.close-modal'),
+    hero: document.getElementById('hero'),
+    overlays: document.getElementsByClassName('overlay'),
+    menus: document.getElementsByClassName('menu'),
+    headerLogo: document.querySelector('.header-logo img'),
+    hamburgerBtn: document.querySelector('.hamburger-btn'),
+    nav: document.querySelector('nav'),
+    meetupsThumbnails: document.querySelector('.meetups-thumbnails'),
+    imageModal: document.querySelector('.image-modal'),
+    modalImage: document.querySelector('.image-modal img'),
+    closeModalBtn: document.querySelector('.close-modal'),
 };
 
 // ============================================================================
 // Configuration Constants
 // ============================================================================
 const BACKUP_MEDIA = [
-  {
-    src: 'meetup-1-1.jpg',
-    caption: 'Meetup 1',
-    thumbnail: 'meetup-1-1.jpg',
-  },
-  {
-    src: 'meetup-1-2.jpg',
-    caption: 'Meetup 1 segunda imagen',
-    thumbnail: 'meetup-1-2.jpg',
-  },
-  {
-    src: 'meetup-2-1.jpg',
-    caption: 'Meetup 2',
-    thumbnail: 'meetup-2-1.jpg',
-  },
-  {
-    src: 'meetup-2-2.jpg',
-    caption: 'Meetup 2 segunda imagen',
-    thumbnail: 'meetup-2-2.jpg',
-  },
-  {
-    src: 'meetup-virtual-1.jpg',
-    caption: 'Meetup virtual',
-    thumbnail: 'meetup-virtual-1.jpg',
-  },
-  {
-    src: 'meetup-virtual-2.jpg',
-    caption: 'Meetup virtual 2',
-    thumbnail: 'meetup-virtual-2.jpg',
-  },
+    {
+        src: 'meetup-1-1.jpg',
+        caption: 'Meetup 1',
+        thumbnail: 'meetup-1-1.jpg',
+    },
+    {
+        src: 'meetup-1-2.jpg',
+        caption: 'Meetup 1 segunda imagen',
+        thumbnail: 'meetup-1-2.jpg',
+    },
+    {
+        src: 'meetup-2-1.jpg',
+        caption: 'Meetup 2',
+        thumbnail: 'meetup-2-1.jpg',
+    },
+    {
+        src: 'meetup-2-2.jpg',
+        caption: 'Meetup 2 segunda imagen',
+        thumbnail: 'meetup-2-2.jpg',
+    },
+    {
+        src: 'meetup-virtual-1.jpg',
+        caption: 'Meetup virtual',
+        thumbnail: 'meetup-virtual-1.jpg',
+    },
+    {
+        src: 'meetup-virtual-2.jpg',
+        caption: 'Meetup virtual 2',
+        thumbnail: 'meetup-virtual-2.jpg',
+    },
 ];
 const CONFIG = {
-  IMG_PATH: 'img/meetups/',
-  THUMBNAIL_SUFFIX: '/thumbnails/',
+    IMG_PATH: 'img/meetups/',
+    THUMBNAIL_SUFFIX: '/thumbnails/',
 
-  // Provisional meetup images - will be replaced with Instagram API integration
-  MEETUP_IMAGES: [...BACKUP_MEDIA],
+    // Provisional meetup images - will be replaced with Instagram API integration
+    MEETUP_IMAGES: [...BACKUP_MEDIA],
 };
 
 // ============================================================================
@@ -65,8 +65,8 @@ const CONFIG = {
 // ============================================================================
 
 const state = {
-  isMenuOpen: false,
-  currentOverlay: null,
+    isMenuOpen: false,
+    currentOverlay: null,
 };
 
 // ============================================================================
@@ -80,15 +80,15 @@ const state = {
  * @param {boolean} force - Force add (true) or remove (false)
  */
 function toggleClass(element, className, force) {
-  if (!element) return;
+    if (!element) return;
 
-  if (force === true) {
-    element.classList.add(className);
-  } else if (force === false) {
-    element.classList.remove(className);
-  } else {
-    element.classList.toggle(className);
-  }
+    if (force === true) {
+        element.classList.add(className);
+    } else if (force === false) {
+        element.classList.remove(className);
+    } else {
+        element.classList.toggle(className);
+    }
 }
 
 /**
@@ -97,11 +97,11 @@ function toggleClass(element, className, force) {
  * @param {string} className - CSS class to remove
  */
 function removeClassFromAll(elements, className) {
-  if (!elements || elements.length === 0) return;
+    if (!elements || elements.length === 0) return;
 
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].classList.remove(className);
-  }
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove(className);
+    }
 }
 
 /**
@@ -109,12 +109,12 @@ function removeClassFromAll(elements, className) {
  * @returns {boolean} True if any overlay is active
  */
 function isAnyOverlayActive() {
-  for (let i = 0; i < DOM.overlays.length; i++) {
-    if (DOM.overlays[i].classList.contains('active')) {
-      return true;
+    for (let i = 0; i < DOM.overlays.length; i++) {
+        if (DOM.overlays[i].classList.contains('active')) {
+            return true;
+        }
     }
-  }
-  return false;
+    return false;
 }
 
 // ============================================================================
@@ -122,11 +122,11 @@ function isAnyOverlayActive() {
 // ============================================================================
 
 function hideHero() {
-  toggleClass(DOM.hero, 'active', false);
+    toggleClass(DOM.hero, 'active', false);
 }
 
 function showHero() {
-  toggleClass(DOM.hero, 'active', true);
+    toggleClass(DOM.hero, 'active', true);
 }
 
 // ============================================================================
@@ -137,35 +137,35 @@ function showHero() {
  * Toggle mobile navigation menu
  */
 function toggleMenu() {
-  state.isMenuOpen = !state.isMenuOpen;
-  toggleClass(DOM.nav, 'active', state.isMenuOpen);
+    state.isMenuOpen = !state.isMenuOpen;
+    toggleClass(DOM.nav, 'active', state.isMenuOpen);
 
-  // Update hamburger button aria label
-  if (DOM.hamburgerBtn) {
-    toggleClass(DOM.hamburgerBtn, 'active', state.isMenuOpen);
-    const label = state.isMenuOpen ? 'Cerrar menú' : 'Abrir menú';
-    DOM.hamburgerBtn.setAttribute('aria-label', label);
-  }
+    // Update hamburger button aria label
+    if (DOM.hamburgerBtn) {
+        toggleClass(DOM.hamburgerBtn, 'active', state.isMenuOpen);
+        const label = state.isMenuOpen ? 'Cerrar menú' : 'Abrir menú';
+        DOM.hamburgerBtn.setAttribute('aria-label', label);
+    }
 }
 
 /**
  * Close mobile navigation menu
  */
 function closeMenu() {
-  state.isMenuOpen = false;
-  toggleClass(DOM.nav, 'active', false);
+    state.isMenuOpen = false;
+    toggleClass(DOM.nav, 'active', false);
 
-  if (DOM.hamburgerBtn) {
-    toggleClass(DOM.hamburgerBtn, 'active', false);
-    DOM.hamburgerBtn.setAttribute('aria-label', 'Abrir menú');
-  }
+    if (DOM.hamburgerBtn) {
+        toggleClass(DOM.hamburgerBtn, 'active', false);
+        DOM.hamburgerBtn.setAttribute('aria-label', 'Abrir menú');
+    }
 }
 
 /**
  * Clean active state from all menu items
  */
 function cleanMenu() {
-  removeClassFromAll(DOM.menus, 'active');
+    removeClassFromAll(DOM.menus, 'active');
 }
 
 // ============================================================================
@@ -177,35 +177,35 @@ function cleanMenu() {
  * @param {string} overlayView - ID of the overlay to show
  */
 function showOverlay(overlayView) {
-  // Close mobile menu if open
-  if (state.isMenuOpen) {
-    closeMenu();
-  }
+    // Close mobile menu if open
+    if (state.isMenuOpen) {
+        closeMenu();
+    }
 
-  hideHero();
-  hideOverlay(false);
-  cleanMenu();
+    hideHero();
+    hideOverlay(false);
+    cleanMenu();
 
-  const overlay = document.getElementById(overlayView);
-  if (!overlay) {
-    console.error(`Overlay with ID "${overlayView}" not found`);
-    return;
-  }
+    const overlay = document.getElementById(overlayView);
+    if (!overlay) {
+        console.error(`Overlay with ID "${overlayView}" not found`);
+        return;
+    }
 
-  // Update state
-  state.currentOverlay = overlayView;
+    // Update state
+    state.currentOverlay = overlayView;
 
-  // Show overlay and activate related elements
-  toggleClass(overlay, 'active', true);
+    // Show overlay and activate related elements
+    toggleClass(overlay, 'active', true);
 
-  const navLink = document.querySelector(`.menu.${overlayView}`);
-  if (navLink) {
-    toggleClass(navLink, 'active', true);
-  }
+    const navLink = document.querySelector(`.menu.${overlayView}`);
+    if (navLink) {
+        toggleClass(navLink, 'active', true);
+    }
 
-  if (DOM.headerLogo) {
-    toggleClass(DOM.headerLogo, 'active', true);
-  }
+    if (DOM.headerLogo) {
+        toggleClass(DOM.headerLogo, 'active', true);
+    }
 }
 
 /**
@@ -213,16 +213,16 @@ function showOverlay(overlayView) {
  * @param {boolean} shouldShowHero - Whether to show hero after hiding overlay
  */
 function hideOverlay(shouldShowHero = false) {
-  removeClassFromAll(DOM.overlays, 'active');
-  cleanMenu();
-  state.currentOverlay = null;
+    removeClassFromAll(DOM.overlays, 'active');
+    cleanMenu();
+    state.currentOverlay = null;
 
-  if (shouldShowHero) {
-    showHero();
-    if (DOM.headerLogo) {
-      toggleClass(DOM.headerLogo, 'active', false);
+    if (shouldShowHero) {
+        showHero();
+        if (DOM.headerLogo) {
+            toggleClass(DOM.headerLogo, 'active', false);
+        }
     }
-  }
 }
 
 // ============================================================================
@@ -234,25 +234,25 @@ function hideOverlay(shouldShowHero = false) {
  * Note: In production, this will fetch from Instagram API
  */
 function generateMeetupThumbnails() {
-  if (!DOM.meetupsThumbnails) {
-    console.error('Meetups thumbnails container not found');
-    return;
-  }
+    if (!DOM.meetupsThumbnails) {
+        console.error('Meetups thumbnails container not found');
+        return;
+    }
 
-  console.log('Generating meetup thumbnails...');
+    console.log('Generating meetup thumbnails...');
 
-  // Clear container
-  DOM.meetupsThumbnails.innerHTML = '';
+    // Clear container
+    DOM.meetupsThumbnails.innerHTML = '';
 
-  // Create document fragment for better performance
-  const fragment = document.createDocumentFragment();
+    // Create document fragment for better performance
+    const fragment = document.createDocumentFragment();
 
-  CONFIG.MEETUP_IMAGES.forEach((image) => {
-    const imgElement = createThumbnailElement(image);
-    fragment.appendChild(imgElement);
-  });
+    CONFIG.MEETUP_IMAGES.forEach((image) => {
+        const imgElement = createThumbnailElement(image);
+        fragment.appendChild(imgElement);
+    });
 
-  DOM.meetupsThumbnails.appendChild(fragment);
+    DOM.meetupsThumbnails.appendChild(fragment);
 }
 
 /**
@@ -261,20 +261,20 @@ function generateMeetupThumbnails() {
  * @returns {HTMLImageElement} Thumbnail image element
  */
 function createThumbnailElement(image) {
-  const imgElement = document.createElement('img');
+    const imgElement = document.createElement('img');
 
-  const isInstagramURL = image.src.startsWith('http');
-  // Set attributes
-  imgElement.src = isInstagramURL
-    ? image.thumbnail
-    : `${CONFIG.IMG_PATH}${CONFIG.THUMBNAIL_SUFFIX}${image.thumbnail}`;
-  imgElement.alt = image.caption || 'Meetup image';
-  imgElement.classList.add('thumbnail');
+    const isInstagramURL = image.src.startsWith('http');
+    // Set attributes
+    imgElement.src = isInstagramURL
+        ? image.thumbnail
+        : `${CONFIG.IMG_PATH}${CONFIG.THUMBNAIL_SUFFIX}${image.thumbnail}`;
+    imgElement.alt = image.caption || 'Meetup image';
+    imgElement.classList.add('thumbnail');
 
-  // Add click handler
-  imgElement.addEventListener('click', () => openImageModal(image));
+    // Add click handler
+    imgElement.addEventListener('click', () => openImageModal(image));
 
-  return imgElement;
+    return imgElement;
 }
 
 /**
@@ -284,46 +284,46 @@ function createThumbnailElement(image) {
  */
 
 function processInstagramMedia(instagramMedia) {
-  const processedMedia = [];
+    const processedMedia = [];
 
-  instagramMedia
-    .filter(
-      // TODO: Handle videos in the future, meanwhile we only want images and carousels
-      (item) =>
-        item.media_type === 'IMAGE' ||
-        item.media_type === 'CAROUSEL_ALBUM',
-    )
-    .forEach((item) => {
-      const {
-        media_type,
-        caption = 'Meetup image',
-        media_url,
-        thumbnail_url,
-        children = [],
-      } = item;
+    instagramMedia
+        .filter(
+            // TODO: Handle videos in the future, meanwhile we only want images and carousels
+            (item) =>
+                item.media_type === 'IMAGE' ||
+                item.media_type === 'CAROUSEL_ALBUM',
+        )
+        .forEach((item) => {
+            const {
+                media_type,
+                caption = 'Meetup image',
+                media_url,
+                thumbnail_url,
+                children = [],
+            } = item;
 
-      if (media_type === 'CAROUSEL_ALBUM') {
-        // Handle carousel - process each child media
-        children.data.forEach((child, index) => {
-          const childUrl = child.media_url;
-          processedMedia.push({
-            src: childUrl,
-            caption: `${caption} (${index + 1}/${children.length})`,
-            thumbnail: childUrl,
-            type: media_type,
-          });
+            if (media_type === 'CAROUSEL_ALBUM') {
+                // Handle carousel - process each child media
+                children.data.forEach((child, index) => {
+                    const childUrl = child.media_url;
+                    processedMedia.push({
+                        src: childUrl,
+                        caption: `${caption} (${index + 1}/${children.length})`,
+                        thumbnail: childUrl,
+                        type: media_type,
+                    });
+                });
+            } else {
+                processedMedia.push({
+                    src: media_url,
+                    caption: caption,
+                    thumbnail: thumbnail_url || media_url,
+                    type: media_type,
+                });
+            }
         });
-      } else {
-        processedMedia.push({
-          src: media_url,
-          caption: caption,
-          thumbnail: thumbnail_url || media_url,
-          type: media_type,
-        });
-      }
-    });
 
-  return processedMedia;
+    return processedMedia;
 }
 
 /**
@@ -331,27 +331,27 @@ function processInstagramMedia(instagramMedia) {
  * @returns {Promise<Array>} Promise resolving to array of processed image objects
  */
 async function fetchMeetupImagesFromInstagram() {
-  const APP_URL = 'http://localhost:3000';
-  try {
-    const response = await fetch(`${APP_URL}/instagram`);
+    const APP_URL = 'http://localhost:3000';
+    try {
+        const response = await fetch(`${APP_URL}/instagram`);
 
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.data && Array.isArray(data.data)) {
+            const processedMedia = processInstagramMedia(data.data);
+            return processedMedia;
+        } else {
+            console.warn('Invalid response format from Instagram API');
+            return BACKUP_MEDIA;
+        }
+    } catch (error) {
+        console.error('Error fetching Instagram images:', error);
+        return BACKUP_MEDIA; // Fallback to provisional images
     }
-
-    const data = await response.json();
-
-    if (data.data && Array.isArray(data.data)) {
-      const processedMedia = processInstagramMedia(data.data);
-      return processedMedia;
-    } else {
-      console.warn('Invalid response format from Instagram API');
-      return BACKUP_MEDIA;
-    }
-  } catch (error) {
-    console.error('Error fetching Instagram images:', error);
-    return BACKUP_MEDIA; // Fallback to provisional images
-  }
 }
 
 // ============================================================================
@@ -361,68 +361,74 @@ async function fetchMeetupImagesFromInstagram() {
 let terminalMessages = [];
 
 const termState = {
-  index: 0,
-  running: true,
+    index: 0,
+    running: true,
 };
 
 async function loadTerminalMessages() {
-  try {
-    const res = await fetch('terminal-messages.json');
-    if (!res.ok) throw new Error('Failed to load terminal messages');
-    terminalMessages = await res.json();
-  } catch (err) {
-    console.error('Error loading terminal messages:', err);
-    terminalMessages = [
-      { cmd: 'weborder --stats', output: '100+ miembros\n6 meetups\n2 tutoriales' },
-      { cmd: 'cat /etc/kernel-team', output: 'Victor Talamantes\nEfren Gonzalez\nRaul Ruiz' },
-    ];
-  }
+    try {
+        const res = await fetch('terminal-messages.json');
+        if (!res.ok) throw new Error('Failed to load terminal messages');
+        terminalMessages = await res.json();
+    } catch (err) {
+        console.error('Error loading terminal messages:', err);
+        terminalMessages = [
+            {
+                cmd: 'weborder --stats',
+                output: '100+ miembros\n6 meetups\n2 tutoriales',
+            },
+            {
+                cmd: 'cat /etc/kernel-team',
+                output: 'Victor Talamantes\nEfren Gonzalez\nRaul Ruiz',
+            },
+        ];
+    }
 }
 
 function typeChar(el, text, i, speed, done) {
-  if (i < text.length) {
-    el.textContent += text[i];
-    setTimeout(() => typeChar(el, text, i + 1, speed, done), speed);
-  } else if (done) {
-    done();
-  }
+    if (i < text.length) {
+        el.textContent += text[i];
+        setTimeout(() => typeChar(el, text, i + 1, speed, done), speed);
+    } else if (done) {
+        done();
+    }
 }
 
 function startTerminal() {
-  const output = document.querySelector('.terminal-output');
-  if (!output) return;
+    const output = document.querySelector('.terminal-output');
+    if (!output) return;
 
-  function cycle() {
-    if (!termState.running) return;
+    function cycle() {
+        if (!termState.running) return;
 
-    output.innerHTML = '';
-    const msg = terminalMessages[termState.index % terminalMessages.length];
-    termState.index++;
+        output.innerHTML = '';
+        const msg = terminalMessages[termState.index % terminalMessages.length];
+        termState.index++;
 
-    const cmdLine = document.createElement('div');
-    cmdLine.innerHTML = '<span class="terminal-prompt">❯ </span>';
-    output.appendChild(cmdLine);
+        const cmdLine = document.createElement('div');
+        cmdLine.innerHTML = '<span class="terminal-prompt">❯ </span>';
+        output.appendChild(cmdLine);
 
-    typeChar(cmdLine, msg.cmd, 0, 40, () => {
-      const outLine = document.createElement('div');
-      outLine.style.color = 'var(--text-secondary)';
-      output.appendChild(outLine);
+        typeChar(cmdLine, msg.cmd, 0, 40, () => {
+            const outLine = document.createElement('div');
+            outLine.style.color = 'var(--text-secondary)';
+            output.appendChild(outLine);
 
-      typeChar(outLine, msg.output, 0, 20, () => {
-        const cursor = document.createElement('span');
-        cursor.className = 'terminal-cursor';
-        cursor.textContent = '_';
-        output.appendChild(cursor);
-        setTimeout(() => {
-          if (termState.running) {
-            setTimeout(cycle, 1000);
-          }
-        }, 3000);
-      });
-    });
-  }
+            typeChar(outLine, msg.output, 0, 20, () => {
+                const cursor = document.createElement('span');
+                cursor.className = 'terminal-cursor';
+                cursor.textContent = '_';
+                output.appendChild(cursor);
+                setTimeout(() => {
+                    if (termState.running) {
+                        setTimeout(cycle, 1000);
+                    }
+                }, 3000);
+            });
+        });
+    }
 
-  setTimeout(cycle, 800);
+    setTimeout(cycle, 800);
 }
 
 // ============================================================================
@@ -434,37 +440,37 @@ function startTerminal() {
  * @param {Object} image - Image object with src and alt properties
  */
 function openImageModal(image) {
-  if (!DOM.imageModal || !DOM.modalImage) {
-    console.error('Image modal elements not found');
-    return;
-  }
+    if (!DOM.imageModal || !DOM.modalImage) {
+        console.error('Image modal elements not found');
+        return;
+    }
 
-  const isInstagramURL = image.src.startsWith('http');
+    const isInstagramURL = image.src.startsWith('http');
 
-  DOM.modalImage.src = isInstagramURL
-    ? image.src
-    : `${CONFIG.IMG_PATH}${image.src}`;
-  DOM.modalImage.alt = image.caption || 'Meetup image';
-  toggleClass(DOM.imageModal, 'active', true);
+    DOM.modalImage.src = isInstagramURL
+        ? image.src
+        : `${CONFIG.IMG_PATH}${image.src}`;
+    DOM.modalImage.alt = image.caption || 'Meetup image';
+    toggleClass(DOM.imageModal, 'active', true);
 
-  // Prevent body scroll when modal is open
-  document.body.style.overflow = 'hidden';
-  // Add a class to the body so we can take other actions
-  document.body.classList.add('image-open');
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+    // Add a class to the body so we can take other actions
+    document.body.classList.add('image-open');
 }
 
 /**
  * Close image modal
  */
 function closeImageModal() {
-  if (!DOM.imageModal) return;
+    if (!DOM.imageModal) return;
 
-  toggleClass(DOM.imageModal, 'active', false);
+    toggleClass(DOM.imageModal, 'active', false);
 
-  // Restore body scroll
-  document.body.style.overflow = '';
-  // Remove the image modal class from the body
-  document.body.classList.remove('image-open');
+    // Restore body scroll
+    document.body.style.overflow = '';
+    // Remove the image modal class from the body
+    document.body.classList.remove('image-open');
 }
 
 // ============================================================================
@@ -480,96 +486,96 @@ function closeImageModal() {
  * @param {KeyboardEvent} e - Keyboard event
  */
 function handleKeys(e) {
-  // Handle Escape key
-  if (e.key === 'Escape') {
-    // Close image modal if open
-    if (DOM.imageModal?.classList.contains('active')) {
-      closeImageModal();
-      return;
+    // Handle Escape key
+    if (e.key === 'Escape') {
+        // Close image modal if open
+        if (DOM.imageModal?.classList.contains('active')) {
+            closeImageModal();
+            return;
+        }
+
+        // Close any open overlay
+        if (isAnyOverlayActive()) {
+            hideOverlay(true);
+            return;
+        }
+
+        // Close mobile menu if open
+        if (state.isMenuOpen) {
+            closeMenu();
+        }
+        return;
     }
 
-    // Close any open overlay
-    if (isAnyOverlayActive()) {
-      hideOverlay(true);
-      return;
+    // Handle p key for podcast view
+    if (e.key === 'p' || e.key === 'P') {
+        showOverlay('podcast-view');
+        return;
     }
 
-    // Close mobile menu if open
-    if (state.isMenuOpen) {
-      closeMenu();
+    // Handle m key for meetups view
+    if (e.key === 'm' || e.key === 'M') {
+        showOverlay('meetups-view');
+        return;
     }
-    return;
-  }
 
-  // Handle p key for podcast view
-  if (e.key === 'p' || e.key === 'P') {
-    showOverlay('podcast-view');
-    return;
-  }
-
-  // Handle m key for meetups view
-  if (e.key === 'm' || e.key === 'M') {
-    showOverlay('meetups-view');
-    return;
-  }
-
-  // Handle a key for about view
-  if (e.key === 'a' || e.key === 'A') {
-    showOverlay('about-view');
-    return;
-  }
+    // Handle a key for about view
+    if (e.key === 'a' || e.key === 'A') {
+        showOverlay('about-view');
+        return;
+    }
 }
 
 /**
  * Initialize event listeners
  */
 function initEventListeners() {
-  // Close modal when clicking outside the image
-  if (DOM.imageModal) {
-    DOM.imageModal.addEventListener('click', (e) => {
-      if (e.target === DOM.imageModal) {
-        closeImageModal();
-      }
-    });
-  }
+    // Close modal when clicking outside the image
+    if (DOM.imageModal) {
+        DOM.imageModal.addEventListener('click', (e) => {
+            if (e.target === DOM.imageModal) {
+                closeImageModal();
+            }
+        });
+    }
 
-  // Handle Escape key for closing modals, overlays, and menu
-  document.addEventListener('keydown', handleKeys);
+    // Handle Escape key for closing modals, overlays, and menu
+    document.addEventListener('keydown', handleKeys);
 
-  // Close mobile menu when clicking on a menu item
-  if (DOM.nav) {
-    DOM.nav.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A' && state.isMenuOpen) {
-        closeMenu();
-      }
-    });
-  }
+    // Close mobile menu when clicking on a menu item
+    if (DOM.nav) {
+        DOM.nav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A' && state.isMenuOpen) {
+                closeMenu();
+            }
+        });
+    }
 }
 
 /**
  * Initialize event listeners
  */
 function initEventListeners() {
-  // Close modal when clicking outside the image
-  if (DOM.imageModal) {
-    DOM.imageModal.addEventListener('click', (e) => {
-      if (e.target === DOM.imageModal) {
-        closeImageModal();
-      }
-    });
-  }
+    // Close modal when clicking outside the image
+    if (DOM.imageModal) {
+        DOM.imageModal.addEventListener('click', (e) => {
+            if (e.target === DOM.imageModal) {
+                closeImageModal();
+            }
+        });
+    }
 
-  // Handle Escape key for closing modals, overlays, and menu
-  document.addEventListener('keydown', handleKeys);
+    // Handle Escape key for closing modals, overlays, and menu
+    document.addEventListener('keydown', handleKeys);
 
-  // Close mobile menu when clicking on a menu item
-  if (DOM.nav) {
-    DOM.nav.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A' && state.isMenuOpen) {
-        closeMenu();
-      }
-    });
-  }
+    // Close mobile menu when clicking on a menu item
+    if (DOM.nav) {
+        DOM.nav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A' && state.isMenuOpen) {
+                closeMenu();
+            }
+        });
+    }
 }
 
 // ============================================================================
@@ -580,35 +586,35 @@ function initEventListeners() {
  * Initialize the application
  */
 async function init() {
-  console.log('Weborder Developers - Initializing...');
+    console.log('Weborder Developers - Initializing...');
 
-  // Initialize event listeners
-  initEventListeners();
+    // Initialize event listeners
+    initEventListeners();
 
-  // Load terminal messages from JSON
-  await loadTerminalMessages();
-  startTerminal();
+    // Load terminal messages from JSON
+    await loadTerminalMessages();
+    startTerminal();
 
-  // Fetch and process Instagram media
-  fetchMeetupImagesFromInstagram()
-    .then((media) => {
-      CONFIG.MEETUP_IMAGES = media;
+    // Fetch and process Instagram media
+    fetchMeetupImagesFromInstagram()
+        .then((media) => {
+            CONFIG.MEETUP_IMAGES = media;
 
-      // Generate thumbnails after media is loaded
-      generateMeetupThumbnails();
-    })
-    .catch((error) => {
-      console.error('Failed to initialize Instagram media:', error);
-      CONFIG.MEETUP_IMAGES = BACKUP_MEDIA;
-      generateMeetupThumbnails();
-    });
+            // Generate thumbnails after media is loaded
+            generateMeetupThumbnails();
+        })
+        .catch((error) => {
+            console.error('Failed to initialize Instagram media:', error);
+            CONFIG.MEETUP_IMAGES = BACKUP_MEDIA;
+            generateMeetupThumbnails();
+        });
 }
 
 // Initialize on DOM content loaded
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', init);
 } else {
-  init();
+    init();
 }
 
 // ============================================================================

@@ -90,7 +90,6 @@ app.get('/instagram', async (c) => {
         const today = new Date();
         let cachedData: any = null;
         let shouldFetchAPI = true;
-        console.log(currentToken);
 
         try {
             const file = Bun.file(filePath);
