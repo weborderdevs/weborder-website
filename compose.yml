@@ -1,0 +1,16 @@
+services:
+    backend:
+        build: ./backend
+        container_name: weborder-backend
+        volumes:
+            - ./.env:/app/.env
+        restart: unless-stopped
+
+    frontend:
+        build: ./frontend
+        container_name: weborder-frontend
+        ports:
+            - '8080:80'
+        depends_on:
+            - backend
+        restart: unless-stopped
