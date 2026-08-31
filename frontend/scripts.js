@@ -331,9 +331,8 @@ function processInstagramMedia(instagramMedia) {
  * @returns {Promise<Array>} Promise resolving to array of processed image objects
  */
 async function fetchMeetupImagesFromInstagram() {
-    const APP_URL = 'http://localhost:3000';
     try {
-        const response = await fetch(`${APP_URL}/instagram`);
+        const response = await fetch('/instagram');
 
         if (!response.ok) {
             throw new Error(`API error: ${response.status}`);

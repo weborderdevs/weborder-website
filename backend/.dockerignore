@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+.env
+instagram-data.json
+*.log
+.DS_Store

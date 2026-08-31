@@ -46,3 +46,4 @@ Thumbs.db
 # Caches
 .eslintcache
 .cache
+backend/instagram-data.json
